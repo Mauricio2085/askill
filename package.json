@@ -1,0 +1,27 @@
+{
+  "name": "askill",
+  "version": "1.0.0",
+  "description": "Enterprise landing page",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Mauricio2085/askill.git"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Mauricio Ocampo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mauricio2085/askill/issues"
+  },
+  "homepage": "https://github.com/Mauricio2085/askill#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
