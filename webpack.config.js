@@ -26,10 +26,12 @@ const plugins = [new webpack.ProgressPlugin(),
                         filename: 'index.html'})
 ]; 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+    },
     output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'index.js'
+        filename: '[name].js',
+    path: __dirname + '/build',
     },
     plugins: plugins,
     module: { rules },
