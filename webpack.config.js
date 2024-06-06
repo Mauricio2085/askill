@@ -14,7 +14,7 @@ const rules = [
                 {
                     loader: 'file-loader',
                     options: { 
-                        name: 'assets/[contenthash].[ext]',
+                        name: 'assets/[name].[contenthash].[ext]',
                     }
                 },
             ],
@@ -31,7 +31,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-    path: __dirname + '/build',
+    path: path.resolve(__dirname + '/dist'),
     },
     plugins: plugins,
     module: { rules },

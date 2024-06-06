@@ -1,5 +1,5 @@
-import './js/render'
-import './assets/styles/main.css'
+import './assets/styles/main.css';
+import { renderFunction } from './js/render';
 
 const services = document.querySelector('#services');
 const servicesContainer = document.querySelector('.services-container');
