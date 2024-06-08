@@ -1,7 +1,8 @@
-import logo from '../assets/statics/Logo_Askill_sin_SAS.svg'
-import menuHamburger from "../assets/statics/menu-hamburguesa.svg"
-import jumbo from "../assets/statics/eplan-engineering-standard.jpeg"
-import serviceIcon from '../assets/statics/tocar.svg'
+import logo from '../assets/statics/Logo_Askill_sin_SAS.svg';
+import menuHamburger from "../assets/statics/menu-hamburguesa.svg";
+import jumbo from "../assets/statics/eplan-engineering-standard.jpeg";
+import serviceIcon from '../assets/statics/tocar.svg';
+import plc from '../assets/statics/plc.jpg';
 
 
 function render(header, jumbotron) {
@@ -68,6 +69,9 @@ const jumbotron = () => {
 }
 
 const servicesMenu = () => {
+
+    const titleAutomation = "Automatización Industrial";
+    const textAutomation = "Ofrecemos soluciones de automatización de última generación que le permiten transformar su producción y alcanzar nuevos niveles de eficiencia en la era de la Industria 4.0. Nuestro enfoque de alta calidad está diseñado para impulsar la productividad y la eficiencia de sus procesos al máximo. Trabajamos con las marcas líderes, como Mitsubishi, Delta, Unitronics, entre otras, para brindarle las soluciones más avanzadas y confiables del mercado:";
     /*
     Services menu render
     */
@@ -77,8 +81,9 @@ const servicesMenu = () => {
     const ulServices = document.createElement('ul');
 
     const liServiceAutomation = document.createElement('li');
+    liServiceAutomation.setAttribute('id', 'automation');
     const serviceNameContainerAutomation = document.createElement('div');
-    serviceNameContainerAutomation.setAttribute('class', 'service-name')
+    serviceNameContainerAutomation.setAttribute('class', 'service-name');
     serviceNameContainerAutomation.textContent = "Automatización y control";
 
     const serviceIconContainerAutomation = document.createElement('div');
@@ -110,7 +115,7 @@ const servicesMenu = () => {
     const liServiceMaintenance = document.createElement('li');
     const serviceNameContainerMaintenance = document.createElement('div');
     serviceNameContainerMaintenance.setAttribute('class', 'service-name')
-    serviceNameContainerMaintenance.textContent = "Automatización y control";
+    serviceNameContainerMaintenance.textContent = "Gestión de Mantenimiento";
 
     const serviceIconContainerMaintenance = document.createElement('div');
     serviceIconContainerMaintenance.setAttribute('class', "icon-intro-container");
@@ -124,14 +129,50 @@ const servicesMenu = () => {
     serviceIconContainerMaintenance.append(serviceIconImgMaintenance);
 
     liServiceElectric.append(serviceIconContainerElectric, serviceNameContainerElectric);
-    liServiceAutomation.append(serviceIconContainerAutomation, serviceNameContainerAutomation );
-    liServiceControl.append(serviceIconContainerControl, serviceNameContainerControl );
+    liServiceAutomation.append(serviceIconContainerAutomation, serviceNameContainerAutomation);
+    liServiceControl.append(serviceIconContainerControl, serviceNameContainerControl);
     liServiceMaintenance.append(serviceIconContainerMaintenance, serviceNameContainerMaintenance );
 
-    ulServices.append(liServiceAutomation, liServiceElectric, liServiceControl, liServiceMaintenance)
-    servicesListContainer.append(ulServices)
-    const servicesMenuContainer = document.getElementById('servicesMenu')
-    servicesMenuContainer.append(servicesListContainer)
+    const introServiceContainer = document.createElement('section');
+    introServiceContainer.setAttribute('class', "services-intro-menu");
+
+    const serviceCardContainer = document.createElement('div');
+    serviceCardContainer.setAttribute('class', "services-card-container");
+    // serviceCardContainer.classList.add("inactive");
+
+    const titleServiceAutomation = document.createElement('div');
+    titleServiceAutomation.setAttribute('class', "title-service");
+    const textTitleAutomation = document.createElement('h1');
+    textTitleAutomation.innerHTML = titleAutomation;
+    
+    const serviceAutomationContainer = document.createElement('div');
+    serviceAutomationContainer.setAttribute('class', "service-container");
+    const imageServiceAutomation = document.createElement('img');
+    imageServiceAutomation.setAttribute('src', plc);
+    imageServiceAutomation.setAttribute('id', 'imageAutomation');
+    const textServiceAutomation = document.createElement('div');
+    textServiceAutomation.setAttribute('class', "text-service");
+    textServiceAutomation.innerHTML = textAutomation;
+
+    titleServiceAutomation.append(textTitleAutomation);
+    serviceAutomationContainer.append(imageServiceAutomation, textServiceAutomation);
+
+    serviceCardContainer.append(titleServiceAutomation, serviceAutomationContainer);
+
+
+    introServiceContainer.append(serviceCardContainer);
+
+
+
+    /*
+
+     */
+    ulServices.append(liServiceAutomation, liServiceElectric, liServiceControl, liServiceMaintenance);
+    servicesListContainer.append(ulServices);
+    const servicesMenuContainer = document.getElementById('servicesMenu');
+    servicesMenuContainer.append(servicesListContainer, introServiceContainer);
+
+
 }
 
 const renderFunction = render(header, jumbotron, servicesMenu)
