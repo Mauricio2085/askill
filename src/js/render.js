@@ -3,12 +3,14 @@ import menuHamburger from "../assets/statics/menu-hamburguesa.svg";
 import jumbo from "../assets/statics/eplan-engineering-standard.jpeg";
 import serviceIcon from '../assets/statics/tocar.svg';
 import plc from '../assets/statics/plc.jpg';
+import electric from '../assets/statics/instalacion-electrica.jpg';
 
 
-function render(header, jumbotron) {
+function render(header, jumbotron, servicesMenu, servicesMain) {
     header();
     jumbotron();
     servicesMenu();
+    servicesMain();
 }
 
 const header = () => {
@@ -71,7 +73,7 @@ const jumbotron = () => {
 const servicesMenu = () => {
 
     const titleAutomation = "Automatización Industrial";
-    const textAutomation = "Ofrecemos soluciones de automatización de última generación que le permiten transformar su producción y alcanzar nuevos niveles de eficiencia en la era de la Industria 4.0. Nuestro enfoque de alta calidad está diseñado para impulsar la productividad y la eficiencia de sus procesos al máximo. Trabajamos con las marcas líderes, como Mitsubishi, Delta, Unitronics, entre otras, para brindarle las soluciones más avanzadas y confiables del mercado:";
+    const textAutomation = "Ofrecemos soluciones de automatización de última generación que le permiten transformar su producción y alcanzar nuevos niveles de eficiencia en la era de la Industria 4.0. Nuestro enfoque de alta calidad está diseñado para impulsar la productividad y la eficiencia de sus procesos al máximo. Trabajamos con las marcas líderes, como Mitsubishi, Delta, Unitronics, entre otras, para brindarle las soluciones más avanzadas y confiables del mercado";
     /*
     Services menu render
     */
@@ -138,7 +140,7 @@ const servicesMenu = () => {
 
     const serviceCardContainer = document.createElement('div');
     serviceCardContainer.setAttribute('class', "services-card-container");
-    // serviceCardContainer.classList.add("inactive");
+    serviceCardContainer.classList.add("inactive");
 
     const titleServiceAutomation = document.createElement('div');
     titleServiceAutomation.setAttribute('class', "title-service");
@@ -161,12 +163,9 @@ const servicesMenu = () => {
 
 
     introServiceContainer.append(serviceCardContainer);
-
-
-
     /*
 
-     */
+    */
     ulServices.append(liServiceAutomation, liServiceElectric, liServiceControl, liServiceMaintenance);
     servicesListContainer.append(ulServices);
     const servicesMenuContainer = document.getElementById('servicesMenu');
@@ -175,6 +174,76 @@ const servicesMenu = () => {
 
 }
 
-const renderFunction = render(header, jumbotron, servicesMenu)
+const servicesMain = () => {
+    /*
+    
+    */
+    const mainTitleAutomation = "Automatización Industrial";
+    const mainTextAutomation = "Ofrecemos soluciones de automatización de última generación que le permiten transformar su producción y alcanzar nuevos niveles de eficiencia en la era de la Industria 4.0. Nuestro enfoque de alta calidad está diseñado para impulsar la productividad y la eficiencia de sus procesos al máximo. Trabajamos con las marcas líderes, como Mitsubishi, Delta, Unitronics, entre otras, para brindarle las soluciones más avanzadas y confiables del mercado";
+    const mainTitleElectrical = "Instalaciones Eléctricas";
+    const mainTextElectrical = "Nuestro servicio de Instalaciones Eléctricas y Redes de Datos combina experiencia en ingeniería eléctrica con soluciones de conectividad avanzadas para ofrecer un servicio completo y de alta calidad";
+    /*
+    Build of Automation service section
+    */
+    const automationServiceMainContainer = document.createElement('Selection');
+    automationServiceMainContainer.classList.add('services-main-container');
+
+    const mainTitleServiceAutomation = document.createElement('div');
+    mainTitleServiceAutomation.setAttribute('class', "main-title-service");
+
+    const mainTextTitleAutomation = document.createElement('h1');
+    mainTextTitleAutomation.innerHTML = mainTitleAutomation;
+
+    const serviceAutomationCardContainer = document.createElement('div');
+    serviceAutomationCardContainer.classList.add("main-service-card-container");
+
+    const mainImageServiceAutomation = document.createElement('img');
+    mainImageServiceAutomation.setAttribute('src', plc);
+
+    const mainTextServiceCardAutomation = document.createElement('div');
+    mainTextServiceCardAutomation.setAttribute('class', "main-text-service");
+    mainTextServiceCardAutomation.innerHTML = mainTextAutomation;
+
+    serviceAutomationCardContainer.append(mainImageServiceAutomation, mainTextServiceCardAutomation)
+    mainTitleServiceAutomation.append(mainTextTitleAutomation);
+    automationServiceMainContainer.append(mainTitleServiceAutomation, serviceAutomationCardContainer);
+    /*
+    Build of electrical installations service section
+    */
+    const electricalServiceMainContainer = document.createElement('Selection');
+    electricalServiceMainContainer.classList.add('services-main-container');
+
+    const mainTitleServiceElectrical = document.createElement('div');
+    mainTitleServiceElectrical.setAttribute('class', "main-title-service");
+
+    const mainTextTitleElectrical = document.createElement('h1');
+    mainTextTitleElectrical.innerHTML = mainTitleElectrical;
+
+    const serviceElectricalCardContainer = document.createElement('div');
+    serviceElectricalCardContainer.classList.add("main-service-card-container");
+
+    const mainImageServiceElectrical = document.createElement('img');
+    mainImageServiceElectrical.setAttribute('src', electric);
+    
+    const mainTextServiceCardElectrical = document.createElement('div');
+    mainTextServiceCardElectrical.setAttribute('class', "main-text-service");
+    mainTextServiceCardElectrical.innerHTML = mainTextElectrical;
+
+    serviceElectricalCardContainer.append(mainImageServiceElectrical, mainTextServiceCardElectrical)
+    mainTitleServiceElectrical.append(mainTextTitleElectrical);
+    electricalServiceMainContainer.append(mainTitleServiceElectrical, serviceElectricalCardContainer);
+
+    const mainServicesRender = document.getElementById('mainContainer')
+    mainServicesRender.append(automationServiceMainContainer, electricalServiceMainContainer);
+}
+
+const about = () => {
+
+    const aboutText = "ASKILL S.A.S es una empresa pereirana especializada en la automatización y control de procesos industriales. Nuestro enfoque se basa en brindar servicios de alta calidad en áreas especializadas como electrónica, automatización industrial, robótica y desarrollo desoftware, con el objetivo de ayudar a nuestros clientes a superar desafíos y lograr sus objetivos."
+    "Nuestra misión incluye colaborar estrechamente con empresas de nuestra región para ofrecer soluciones efectivas y eficientes. Nos destacamos en cada proyecto en el que participamos, basándonos en principios sólidos como la organización, la planificación excepcional y la obtención de resultados satisfactorios.";
+            
+        }
+
+const renderFunction = render(header, jumbotron, servicesMenu, servicesMain)
 
 export {renderFunction};
