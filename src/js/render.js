@@ -1,7 +1,10 @@
-import logo from '../assets/statics/Logo_Askill_sin_SAS.svg'
-import menuHamburger from "../assets/statics/menu-hamburguesa.svg"
-import jumbo from "../assets/statics/eplan-engineering-standard.jpeg"
-import serviceIcon from '../assets/statics/tocar.svg'
+import logo from '../assets/statics/Logo_Askill_sin_SAS.svg';
+import menuHamburger from "../assets/statics/menu-hamburguesa.svg";
+import jumbo from "../assets/statics/eplan-engineering-standard.jpeg";
+import serviceIcon from '../assets/statics/tocar.svg';
+import plc from '../assets/statics/plc.jpg';
+import electric from '../assets/statics/instalacion-electrica.jpg';
+import panel from '../assets/statics/gabinete de control.jpg';
 
 
 function render(header, jumbotron) {
@@ -107,11 +110,6 @@ const servicesMenu = () => {
     const serviceIconImgControl = document.createElement('img');
     serviceIconImgControl.setAttribute('src', serviceIcon);
 
-    const liServiceMaintenance = document.createElement('li');
-    const serviceNameContainerMaintenance = document.createElement('div');
-    serviceNameContainerMaintenance.setAttribute('class', 'service-name')
-    serviceNameContainerMaintenance.textContent = "Automatización y control";
-
     const serviceIconContainerMaintenance = document.createElement('div');
     serviceIconContainerMaintenance.setAttribute('class', "icon-intro-container");
     const serviceIconImgMaintenance = document.createElement('img');
@@ -124,16 +122,147 @@ const servicesMenu = () => {
     serviceIconContainerMaintenance.append(serviceIconImgMaintenance);
 
     liServiceElectric.append(serviceIconContainerElectric, serviceNameContainerElectric);
-    liServiceAutomation.append(serviceIconContainerAutomation, serviceNameContainerAutomation );
-    liServiceControl.append(serviceIconContainerControl, serviceNameContainerControl );
-    liServiceMaintenance.append(serviceIconContainerMaintenance, serviceNameContainerMaintenance );
+    liServiceAutomation.append(serviceIconContainerAutomation, serviceNameContainerAutomation);
+    liServiceControl.append(serviceIconContainerControl, serviceNameContainerControl);
 
-    ulServices.append(liServiceAutomation, liServiceElectric, liServiceControl, liServiceMaintenance)
-    servicesListContainer.append(ulServices)
-    const servicesMenuContainer = document.getElementById('servicesMenu')
-    servicesMenuContainer.append(servicesListContainer)
+    const introServiceContainer = document.createElement('section');
+    introServiceContainer.setAttribute('class', "services-intro-menu");
+
+    const serviceCardContainer = document.createElement('div');
+    serviceCardContainer.setAttribute('class', "services-card-container");
+    serviceCardContainer.classList.add("inactive");
+
+    const titleServiceAutomation = document.createElement('div');
+    titleServiceAutomation.setAttribute('class', "title-service");
+    const textTitleAutomation = document.createElement('h1');
+    textTitleAutomation.innerHTML = titleAutomation;
+    
+    const serviceAutomationContainer = document.createElement('div');
+    serviceAutomationContainer.setAttribute('class', "service-container");
+    const imageServiceAutomation = document.createElement('img');
+    imageServiceAutomation.setAttribute('src', plc);
+    imageServiceAutomation.setAttribute('id', 'imageAutomation');
+    const textServiceAutomation = document.createElement('div');
+    textServiceAutomation.setAttribute('class', "text-service");
+    textServiceAutomation.innerHTML = textAutomation;
+
+    titleServiceAutomation.append(textTitleAutomation);
+    serviceAutomationContainer.append(imageServiceAutomation, textServiceAutomation);
+
+    serviceCardContainer.append(titleServiceAutomation, serviceAutomationContainer);
+
+
+    introServiceContainer.append(serviceCardContainer);
+    /*
+
+    */
+    ulServices.append(liServiceAutomation, liServiceElectric, liServiceControl);
+    servicesListContainer.append(ulServices);
+    const servicesMenuContainer = document.getElementById('servicesMenu');
+    servicesMenuContainer.append(servicesListContainer, introServiceContainer);
+
+
 }
 
-const renderFunction = render(header, jumbotron, servicesMenu)
+const servicesMain = () => {
+    /*
+    
+    */
+    const mainTitleAutomation = "Automatización Industrial";
+    const mainTextAutomation = "Ofrecemos soluciones de automatización de última generación que le permiten transformar su producción y alcanzar nuevos niveles de eficiencia en la era de la Industria 4.0. Nuestro enfoque de alta calidad está diseñado para impulsar la productividad y la eficiencia de sus procesos al máximo. Trabajamos con las marcas líderes, como Mitsubishi, Delta, Unitronics, entre otras, para brindarle las soluciones más avanzadas y confiables del mercado";
+    const mainTitleElectrical = "Instalaciones Eléctricas";
+    const mainTextElectrical = "Nuestro servicio de Instalaciones Eléctricas y Redes de Datos combina experiencia en ingeniería eléctrica con soluciones de conectividad avanzadas para ofrecer un servicio completo y de alta calidad";
+    const mainTitleControl = "Tableros de control"
+    const mainTextControl = "Nuestro servicio de Instalaciones Eléctricas y Redes de Datos combina experiencia en ingeniería eléctrica con soluciones de conectividad avanzadas para ofrecer un servicio completo y de alta calidad";
+    /*
+    Build of Automation service section
+    */
+    const automationServiceMainContainer = document.createElement('Selection');
+    automationServiceMainContainer.classList.add('services-main-container');
+
+    const mainTitleServiceAutomation = document.createElement('div');
+    mainTitleServiceAutomation.setAttribute('class', "main-title-service");
+
+    const mainTextTitleAutomation = document.createElement('h1');
+    mainTextTitleAutomation.innerHTML = mainTitleAutomation;
+
+    const serviceAutomationCardContainer = document.createElement('div');
+    serviceAutomationCardContainer.classList.add("main-service-card-container");
+
+    const mainImageServiceAutomation = document.createElement('img');
+    mainImageServiceAutomation.setAttribute('src', plc);
+
+    const mainTextServiceCardAutomation = document.createElement('div');
+    mainTextServiceCardAutomation.setAttribute('class', "main-text-service");
+    mainTextServiceCardAutomation.innerHTML = mainTextAutomation;
+
+    serviceAutomationCardContainer.append(mainImageServiceAutomation, mainTextServiceCardAutomation)
+    mainTitleServiceAutomation.append(mainTextTitleAutomation);
+    automationServiceMainContainer.append(mainTitleServiceAutomation, serviceAutomationCardContainer);
+    /*
+    Build of electrical installations service section
+    */
+    const electricalServiceMainContainer = document.createElement('Selection');
+    electricalServiceMainContainer.classList.add('services-main-container');
+
+    const mainTitleServiceElectrical = document.createElement('div');
+    mainTitleServiceElectrical.setAttribute('class', "main-title-service");
+
+    const mainTextTitleElectrical = document.createElement('h1');
+    mainTextTitleElectrical.innerHTML = mainTitleElectrical;
+
+    const serviceElectricalCardContainer = document.createElement('div');
+    serviceElectricalCardContainer.classList.add("main-service-card-container");
+
+    const mainImageServiceElectrical = document.createElement('img');
+    mainImageServiceElectrical.setAttribute('src', electric);
+    
+    const mainTextServiceCardElectrical = document.createElement('div');
+    mainTextServiceCardElectrical.setAttribute('class', "main-text-service");
+    mainTextServiceCardElectrical.innerHTML = mainTextElectrical;
+
+    serviceElectricalCardContainer.append(mainImageServiceElectrical, mainTextServiceCardElectrical)
+    mainTitleServiceElectrical.append(mainTextTitleElectrical);
+    electricalServiceMainContainer.append(mainTitleServiceElectrical, serviceElectricalCardContainer);
+    /*
+    Build of Control panel service section
+    */
+    const controlServiceMainContainer = document.createElement('Selection');
+    controlServiceMainContainer.classList.add('services-main-container');
+
+    const mainTitleServiceControl = document.createElement('div');
+    mainTitleServiceControl.setAttribute('class', "main-title-service");
+
+    const mainTextTitleControl= document.createElement('h1');
+    mainTextTitleControl.innerHTML = mainTitleControl;
+
+    const serviceControlCardContainer = document.createElement('div');
+    serviceControlCardContainer.classList.add("main-service-card-container");
+
+    const mainImageServiceControl = document.createElement('img');
+    mainImageServiceControl.setAttribute('src', panel);
+    
+    const mainTextServiceCardControl = document.createElement('div');
+    mainTextServiceCardControl.setAttribute('class', "main-text-service");
+    mainTextServiceCardControl.innerHTML = mainTextControl;
+
+    serviceControlCardContainer.append(mainImageServiceControl, mainTextServiceCardControl)
+    mainTitleServiceControl.append(mainTextTitleControl);
+    controlServiceMainContainer.append(mainTitleServiceControl, serviceControlCardContainer);
+    /*
+    Main services Render 
+     */
+    const mainServicesRender = document.getElementById('mainContainer')
+    mainServicesRender.append(automationServiceMainContainer, electricalServiceMainContainer, controlServiceMainContainer);
+}
+
+const about = () => {
+
+    const aboutText = "ASKILL S.A.S es una empresa pereirana especializada en la automatización y control de procesos industriales. Nuestro enfoque se basa en brindar servicios de alta calidad en áreas especializadas como electrónica, automatización industrial, robótica y desarrollo desoftware, con el objetivo de ayudar a nuestros clientes a superar desafíos y lograr sus objetivos."
+    "Nuestra misión incluye colaborar estrechamente con empresas de nuestra región para ofrecer soluciones efectivas y eficientes. Nos destacamos en cada proyecto en el que participamos, basándonos en principios sólidos como la organización, la planificación excepcional y la obtención de resultados satisfactorios.";
+            
+        }
+
+const renderFunction = render(header, jumbotron, servicesMenu, servicesMain)
 
 export {renderFunction};
