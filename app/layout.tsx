@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { DynaPuff, Montserrat, Roboto, Rowdies, Ubuntu } from 'next/font/google'
+import './globals.css'
 
 const ubuntu = Ubuntu({
   weight: ['300', '700'],

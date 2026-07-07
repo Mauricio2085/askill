@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-askill-black: #1c1c1c;
+  --color-askill-orange: #ee752f;
+
+  --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
+  --font-montserrat: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-dynapuff: var(--font-dynapuff), ui-sans-serif, system-ui, sans-serif;
+  --font-roboto: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --font-rowdies: var(--font-rowdies), ui-sans-serif, system-ui, sans-serif;
+
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-askill-black font-sans text-white antialiased;
+  }
+}
