@@ -95,6 +95,7 @@ const servicesMenu = () => {
 
     
     const liServiceElectric = document.createElement('li');
+    liServiceElectric.setAttribute('id', 'electric');
     const serviceNameContainerElectric = document.createElement('div');
     serviceNameContainerElectric.setAttribute('class', 'service-name')
     serviceNameContainerElectric.textContent = "Soluciones eléctricas";
