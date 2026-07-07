@@ -8,6 +8,7 @@ const servicesContainer = document.querySelector('#servicesMenu');
 const serviceMenuAnimation = document.getElementById('servicesMenu');
 const serviceMenuListAnimation = document.querySelector('.services-menu');
 const automation = document.querySelector('#automation');
+const electric = document.querySelector("#electric")
 const automationCardContainer = document.querySelector('.services-card-container');
 const automationCard = document.querySelector('.service-container');
 const imageCardAutomation = document.querySelector('#imageAutomation');

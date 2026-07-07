@@ -2,11 +2,12 @@
   "name": "askill",
   "version": "1.0.0",
   "description": "Enterprise landing page",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "build": "webpack --mode=production",
-    "dev": "webpack serve --config webpack.config.js --mode=development",
-    "start": "webpack serve"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,18 +24,27 @@
     "url": "https://github.com/Mauricio2085/askill/issues"
   },
   "homepage": "https://github.com/Mauricio2085/askill#readme",
-  "devDependencies": {
-    "css-loader": "^6.8.1",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.6.0",
-    "nodemon": "^3.0.2",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  },
+  "packageManager": "pnpm@11.1.1",
   "dependencies": {
-    "express": "^4.19.2"
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
-  "module": "module"
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.10",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3"
+  }
 }
