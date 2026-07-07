@@ -1,8 +1,32 @@
 @import 'tailwindcss';
 
-@theme {
-  --color-askill-black: #1c1c1c;
-  --color-askill-orange: #ee752f;
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-askill-black: var(--askill-black);
+  --color-askill-orange: var(--askill-orange);
+  --color-askill-primary: var(--askill-primary);
+  --color-askill-primary-foreground: var(--askill-primary-foreground);
+  --color-askill-secondary: var(--askill-secondary);
+  --color-askill-secondary-foreground: var(--askill-secondary-foreground);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 
   --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
   --font-montserrat: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
@@ -17,12 +41,58 @@
   --breakpoint-2xl: 96rem;
 }
 
+:root {
+  --askill-black: #1c1c1c;
+  --askill-orange: #ee752f;
+  --askill-primary: #ee752f;
+  --askill-primary-foreground: #ffffff;
+  --askill-secondary: #1c1c1c;
+  --askill-secondary-foreground: #ffffff;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --border: oklch(0.922 0 0);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --askill-primary: #f0884a;
+  --askill-primary-foreground: #ffffff;
+  /* Marca: el charcoal de Askill no debe invertirse con el tema de la app */
+  --askill-secondary: #1c1c1c;
+  --askill-secondary-foreground: #ffffff;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+}
+
 @layer base {
+  * {
+    @apply border-border;
+  }
+
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth font-sans;
   }
 
   body {
-    @apply min-h-screen bg-askill-black font-sans text-white antialiased;
+    @apply min-h-dvh bg-background text-foreground antialiased;
   }
 }
