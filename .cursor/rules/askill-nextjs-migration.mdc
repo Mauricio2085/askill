@@ -1,0 +1,47 @@
+---
+description: ASKILL landing page migration conventions and project context
+alwaysApply: true
+---
+
+# ASKILL Project Context
+
+Enterprise landing page for ASKILL S.A.S (industrial automation and control). Migrating from Webpack + vanilla JS to Next.js 16 App Router.
+
+## Stack
+
+- Package manager: pnpm (never npm or yarn)
+- Framework: Next.js 16, React 19, TypeScript
+- Styling: Tailwind CSS v4 via `@tailwindcss/postcss`
+- Linting: ESLint flat config with `eslint-config-next`
+
+## Project Structure
+
+- `app/` — Next.js App Router (new UI lives here)
+- `components/` — React components (create as needed during migration)
+- `src/` — Legacy vanilla JS/CSS (reference only; do not modify unless explicitly requested)
+- `public/` — Static assets served by Next.js
+
+## Design Tokens (Tailwind v4)
+
+Defined in `app/globals.css`:
+
+- `askill-black`: #1c1c1c
+- `askill-orange`: #ee752f
+- Fonts: Ubuntu (primary), Montserrat, DynaPuff, Roboto, Rowdies via `next/font/google`
+
+## Migration Guidelines
+
+- Migrate UI section by section as atomic conventional commits (e.g., `feat(ui): migrate header`)
+- Preserve existing copy, class semantics, and interaction behavior from legacy code
+- Use Tailwind utilities with mobile-first responsive design (`sm:`, `md:`, `lg:`, `xl:`)
+- Prefer `next/image` for images and `next/link` for navigation
+- Extract client interactivity into `'use client'` components only when needed
+- Keep commits focused: config changes separate from UI migration
+
+## Commands
+
+```bash
+pnpm dev    # development server
+pnpm build  # production build
+pnpm lint   # ESLint
+```
