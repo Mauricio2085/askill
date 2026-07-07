@@ -1,15 +1,16 @@
 import { Header } from '@/components/Header'
+import { Jumbotron } from '@/components/Jumbotron'
 import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
+      <Jumbotron />
 
       <main>
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-linear-to-b from-askill-secondary to-background" />
-          <div className="container mx-auto px-4 py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-background">
+          <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <div>
                 <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
