@@ -123,7 +123,9 @@ dist
 .vscode-test
 .vscode
 
-# yarn v2
+# pnpm
+.pnpm-store/
+
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
