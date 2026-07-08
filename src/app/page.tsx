@@ -2,6 +2,7 @@ import { CorporateHero } from '@/components/CorporateHero'
 import { Header } from '@/components/Header'
 import { Jumbotron } from '@/components/Jumbotron'
 import { ServicesSection } from '@/components/ServicesSection'
+import { SiteFooter } from '@/components/SiteFooter'
 import Link from 'next/link'
 
 export default function Home() {
@@ -14,26 +15,26 @@ export default function Home() {
         <CorporateHero />
         <ServicesSection />
 
-        <section id="about" className="container mx-auto px-4 py-16 sm:py-20">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-              Sobre nosotros
+        <section className="border-t border-border bg-secondary/20">
+          <div className="container mx-auto px-4 py-14 text-center sm:py-16">
+            <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
+              ASKILL S.A.S
+            </p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+              Tu aliado en Mantenimiento y Proyectos
             </h2>
-            <p className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              ASKILL S.A.S es una empresa pereirana especializada en la
-              automatización y control de procesos industriales. Nuestro enfoque
-              se basa en brindar servicios de alta calidad en áreas
-              especializadas como electrónica, automatización industrial,
-              robótica y desarrollo de software, con el objetivo de ayudar a
-              nuestros clientes a superar desafíos y lograr sus objetivos.
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground sm:text-lg">
+              Conoce nuestra historia, principios de trabajo y cómo combinamos
+              ingeniería en planta con Industria 4.0.
             </p>
-            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Nuestra misión incluye colaborar estrechamente con empresas de
-              nuestra región para ofrecer soluciones efectivas y eficientes. Nos
-              destacamos en cada proyecto en el que participamos, basándonos en
-              principios sólidos como la organización, la planificación
-              excepcional y la obtención de resultados satisfactorios.
-            </p>
+            <div className="mt-8">
+              <Link
+                href="/sobre-nosotros"
+                className="inline-flex h-11 items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95"
+              >
+                Conocer ASKILL
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -61,29 +62,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t bg-background">
-        <div className="container mx-auto px-4 py-10 text-sm text-muted-foreground">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p>
-              © {new Date().getFullYear()} Automation Services with Skill S.A.S
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link href="#servicios" className="hover:text-foreground">
-                Servicios
-              </Link>
-              <Link href="#plataforma-digital" className="hover:text-foreground">
-                Plataforma digital
-              </Link>
-              <Link href="#about" className="hover:text-foreground">
-                Sobre nosotros
-              </Link>
-              <Link href="#soporte" className="hover:text-foreground">
-                Soporte técnico
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

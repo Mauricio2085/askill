@@ -26,7 +26,7 @@ export function CorporateHero() {
               Ver servicios
             </Link>
             <Link
-              href="#about"
+              href="/sobre-nosotros"
               className="inline-flex h-11 w-full items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto"
             >
               Sobre nosotros

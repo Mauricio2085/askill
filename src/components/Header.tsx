@@ -12,17 +12,17 @@ import {
 import { askillLogoImageSrc } from '@/lib/askill-logo'
 
 const navItems = [
-  { href: '#about', label: 'Sobre nosotros' },
-  { href: '#soporte', label: 'Soporte técnico' },
+  { href: '/sobre-nosotros', label: 'Sobre nosotros' },
+  { href: '/#soporte', label: 'Soporte técnico' },
 ] as const
 
 const serviceLinks = [
   ...engineeringServices.map((service) => ({
-    href: `#${service.id}`,
+    href: `/#${service.id}`,
     label: service.title,
   })),
   {
-    href: `#${platformService.id}`,
+    href: `/#${platformService.id}`,
     label: platformService.title,
   },
 ]
@@ -60,14 +60,14 @@ export function Header() {
           aria-label="Navegación principal"
         >
           <ul className="flex items-center gap-8 font-sans text-base lg:gap-11">
-            <li className="relative group">
+            <li className="group relative">
               <Link
-                href="#servicios"
+                href="/#servicios"
                 className="text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground"
               >
                 Servicios
               </Link>
-              <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                 <ul className="rounded-lg border border-border bg-askill-secondary py-2 shadow-lg">
                   {serviceLinks.map((link) => (
                     <li key={link.href}>
@@ -135,7 +135,7 @@ export function Header() {
                 <ul className="mt-3 flex flex-col gap-2 border-l border-white/10 pl-4">
                   <li>
                     <Link
-                      href="#servicios"
+                      href="/#servicios"
                       className="block text-sm text-askill-secondary-foreground/80 hover:text-askill-secondary-foreground"
                       onClick={closeMenu}
                     >
