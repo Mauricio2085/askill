@@ -2,44 +2,50 @@ import Link from 'next/link'
 
 import { aboutContent } from '@/content/about'
 
-function BrochureDecorations() {
+function PrincipleCard({
+  index,
+  title,
+  description,
+}: {
+  index: number
+  title: string
+  description: string
+}) {
   return (
-    <>
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+    <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-askill-primary/50 hover:shadow-[0_0_0_1px_rgba(238,117,47,0.15),0_12px_40px_rgba(0,0,0,0.25)] sm:p-7">
+      <span
+        className="absolute inset-x-0 top-0 h-1 bg-askill-primary"
         aria-hidden
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(-45deg, transparent, transparent 48px, rgba(255,255,255,0.03) 48px, rgba(255,255,255,0.03) 49px)',
-        }}
       />
-      <div
-        className="pointer-events-none absolute right-0 top-0 h-40 w-40 sm:h-52 sm:w-52"
+      <span
+        className="text-3xl font-bold leading-none text-askill-primary/25 transition-colors group-hover:text-askill-primary/40"
         aria-hidden
       >
-        <span className="absolute right-8 top-10 block h-px w-24 rotate-45 bg-white/25 sm:right-12 sm:top-14 sm:w-32" />
-        <span className="absolute right-6 top-14 block h-px w-24 rotate-45 bg-askill-primary sm:right-10 sm:top-[4.5rem] sm:w-32" />
-        <span className="absolute right-4 top-[4.5rem] block h-px w-24 rotate-45 bg-white/25 sm:right-8 sm:top-[5.75rem] sm:w-32" />
-      </div>
-    </>
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <h3 className="mt-4 text-lg font-semibold leading-snug text-askill-primary sm:text-xl">
+        {title}
+      </h3>
+      <p className="mt-3 flex-1 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
+        {description}
+      </p>
+    </li>
   )
 }
 
 export function AboutPageContent() {
   return (
-    <section className="relative overflow-hidden bg-askill-secondary text-white">
-      <BrochureDecorations />
-
-      <div className="container relative mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="font-montserrat text-4xl font-bold uppercase tracking-[0.2em] text-askill-primary drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-5xl lg:text-6xl">
+    <section className="bg-background">
+      <div className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl text-center lg:max-w-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-askill-primary sm:text-4xl lg:text-5xl">
             {aboutContent.title}
           </h1>
 
-          <div className="mt-10 space-y-6 text-base leading-relaxed text-white/95 sm:text-lg sm:leading-8">
+          <div className="mt-8 space-y-6 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
               En{' '}
-              <strong className="font-semibold text-white">
+              <strong className="font-semibold text-foreground">
                 ASKILL S.A.S.
               </strong>{' '}
               somos una empresa pereirana especializada en la automatización,
@@ -51,41 +57,32 @@ export function AboutPageContent() {
             </p>
             <p>{aboutContent.intro[1]}</p>
           </div>
+        </div>
 
-          <ul className="mt-10 space-y-6 border-t border-white/10 pt-10">
-            {aboutContent.principles.map((principle) => (
-              <li
-                key={principle.title}
-                className="flex gap-3 text-base leading-relaxed sm:text-lg sm:leading-8"
-              >
-                <span
-                  className="mt-2.5 size-1.5 shrink-0 rounded-full bg-white"
-                  aria-hidden
-                />
-                <p>
-                  <strong className="font-semibold text-askill-primary">
-                    {principle.title}:
-                  </strong>{' '}
-                  <span className="text-white/95">{principle.description}</span>
-                </p>
-              </li>
-            ))}
-          </ul>
+        <ul className="mx-auto mt-14 grid max-w-6xl gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+          {aboutContent.principles.map((principle, index) => (
+            <PrincipleCard
+              key={principle.title}
+              index={index}
+              title={principle.title}
+              description={principle.description}
+            />
+          ))}
+        </ul>
 
-          <div className="mt-14 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/#servicios"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95"
-            >
-              Ver servicios
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex h-11 items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white hover:bg-white/10"
-            >
-              Volver al inicio
-            </Link>
-          </div>
+        <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row lg:mt-16">
+          <Link
+            href="/#servicios"
+            className="inline-flex h-11 w-full items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 sm:w-auto"
+          >
+            Ver servicios
+          </Link>
+          <Link
+            href="/"
+            className="inline-flex h-11 w-full items-center justify-center rounded-md border bg-background px-6 text-sm font-semibold hover:bg-accent sm:w-auto"
+          >
+            Volver al inicio
+          </Link>
         </div>
       </div>
     </section>
