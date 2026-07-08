@@ -18,8 +18,8 @@ export function SiteFooter() {
             <Link href="/sobre-nosotros" className="hover:text-foreground">
               Sobre nosotros
             </Link>
-            <Link href="/#soporte" className="hover:text-foreground">
-              Soporte técnico
+            <Link href="/contacto" className="hover:text-foreground">
+              Contacto
             </Link>
           </div>
         </div>

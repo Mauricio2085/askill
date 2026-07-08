@@ -1,8 +1,10 @@
+import { ContactCta } from '@/components/ContactCta'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Header } from '@/components/Header'
 import { Jumbotron } from '@/components/Jumbotron'
 import { ServicesSection } from '@/components/ServicesSection'
 import { SiteFooter } from '@/components/SiteFooter'
+import { contactCtaByPage } from '@/content/contact'
 import Link from 'next/link'
 
 export default function Home() {
@@ -38,28 +40,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="soporte"
-          className="border-t border-border bg-secondary/20"
-        >
-          <div className="container mx-auto px-4 py-12 text-center sm:py-16">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Soporte técnico
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-pretty text-muted-foreground sm:text-lg">
-              Acompañamos a nuestros clientes en la implementación, puesta en
-              marcha y continuidad operativa de sus soluciones industriales.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="#servicios"
-                className="inline-flex h-11 items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95"
-              >
-                Conocer nuestros servicios
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ContactCta {...contactCtaByPage.home} />
       </main>
 
       <SiteFooter />

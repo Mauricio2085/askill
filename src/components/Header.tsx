@@ -13,7 +13,7 @@ import { askillLogoImageSrc } from '@/lib/askill-logo'
 
 const navItems = [
   { href: '/sobre-nosotros', label: 'Sobre nosotros' },
-  { href: '/#soporte', label: 'Soporte técnico' },
+  { href: '/contacto', label: 'Contacto' },
 ] as const
 
 const serviceLinks = [

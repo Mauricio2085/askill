@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { aboutContent } from '@/content/about'
 
 function PrincipleCard({
@@ -69,21 +67,6 @@ export function AboutPageContent() {
             />
           ))}
         </ul>
-
-        <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row lg:mt-16">
-          <Link
-            href="/#servicios"
-            className="inline-flex h-11 w-full items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 sm:w-auto"
-          >
-            Ver servicios
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex h-11 w-full items-center justify-center rounded-md border bg-background px-6 text-sm font-semibold hover:bg-accent sm:w-auto"
-          >
-            Volver al inicio
-          </Link>
-        </div>
       </div>
     </section>
   )

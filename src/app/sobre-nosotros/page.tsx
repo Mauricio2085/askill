@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 
 import { AboutPageContent } from '@/components/AboutPageContent'
+import { ContactCta } from '@/components/ContactCta'
 import { Header } from '@/components/Header'
 import { SiteFooter } from '@/components/SiteFooter'
+import { contactCtaByPage } from '@/content/contact'
 
 export const metadata: Metadata = {
   title: 'Sobre nosotros | ASKILL S.A.S',
@@ -16,6 +18,10 @@ export default function AboutPage() {
       <Header />
       <main>
         <AboutPageContent />
+        <ContactCta
+          {...contactCtaByPage.about}
+          secondaryLink={{ href: '/#servicios', label: 'Ver servicios' }}
+        />
       </main>
       <SiteFooter />
     </div>
