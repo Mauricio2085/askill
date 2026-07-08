@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
-import menuHamburger from '@/assets/statics/menu-hamburguesa.svg'
-import { askillLogoImageSrc } from '@/lib/askill-logo'
+import menuHamburger from "@/assets/statics/menu-hamburguesa.svg";
+import { askillLogoImageSrc } from "@/lib/askill-logo";
 
 const navItems = [
-  { href: '#caracteristicas', label: 'Servicios' },
-  { href: '#about', label: 'Sobre nosotros' },
-  { href: '#soporte', label: 'Soporte técnico' },
-] as const
+  { href: "#caracteristicas", label: "Servicios" },
+  { href: "#about", label: "Sobre nosotros" },
+  { href: "#soporte", label: "Soporte técnico" },
+] as const;
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function closeMenu() {
-    setIsMenuOpen(false)
+    setIsMenuOpen(false);
   }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-askill-secondary text-askill-secondary-foreground">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 py-3 sm:py-3.5">
         <Link
           href="/"
           className="flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary"
@@ -33,9 +33,9 @@ export function Header() {
             src={askillLogoImageSrc}
             alt="ASKILL"
             width={200}
-            height={56}
+            height={106}
             priority
-            className="h-10 w-auto object-contain sm:h-12"
+            className="h-auto w-36 object-contain sm:w-40 md:w-44 lg:w-48 xl:w-[200px]"
           />
         </Link>
 
@@ -62,7 +62,7 @@ export function Header() {
           className="inline-flex items-center justify-center rounded-md p-2 md:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <Image
@@ -98,5 +98,5 @@ export function Header() {
         </nav>
       ) : null}
     </header>
-  )
+  );
 }
