@@ -5,7 +5,7 @@ alwaysApply: true
 
 # ASKILL Project Context
 
-Enterprise landing page for ASKILL S.A.S (industrial automation and control). Migrating from Webpack + vanilla JS to Next.js 16 App Router.
+Enterprise landing page for ASKILL S.A.S (industrial automation and control). Built with Next.js 16 App Router.
 
 ## Stack
 
@@ -16,10 +16,11 @@ Enterprise landing page for ASKILL S.A.S (industrial automation and control). Mi
 
 ## Project Structure
 
-- `app/` — Next.js App Router (new UI lives here)
-- `components/` — React components (create as needed during migration)
-- `src/` — Legacy vanilla JS/CSS (reference only; do not modify unless explicitly requested)
-- `public/` — Static assets served by Next.js
+- `src/app/` — Next.js App Router pages and layouts
+- `src/components/` — React components
+- `src/content/` — Copy and structured content
+- `src/assets/` — Images and static files imported by components
+- `public/` — Static assets served by Next.js at the root URL
 
 ## Design Tokens (Tailwind v4)
 
