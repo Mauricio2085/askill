@@ -1,28 +1,44 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 
-import menuHamburger from "@/assets/statics/menu-hamburguesa.svg";
-import { askillLogoImageSrc } from "@/lib/askill-logo";
+import menuHamburger from '@/assets/statics/menu-hamburguesa.svg'
+import {
+  engineeringServices,
+  platformService,
+} from '@/content/services'
+import { askillLogoImageSrc } from '@/lib/askill-logo'
 
 const navItems = [
-  { href: "#caracteristicas", label: "Servicios" },
-  { href: "#about", label: "Sobre nosotros" },
-  { href: "#soporte", label: "Soporte técnico" },
-] as const;
+  { href: '#about', label: 'Sobre nosotros' },
+  { href: '#soporte', label: 'Soporte técnico' },
+] as const
+
+const serviceLinks = [
+  ...engineeringServices.map((service) => ({
+    href: `#${service.id}`,
+    label: service.title,
+  })),
+  {
+    href: `#${platformService.id}`,
+    label: platformService.title,
+  },
+]
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
 
   function closeMenu() {
-    setIsMenuOpen(false);
+    setIsMenuOpen(false)
+    setIsServicesOpen(false)
   }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-askill-secondary text-askill-secondary-foreground">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 py-3 sm:py-3.5">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-3.5 lg:px-10">
         <Link
           href="/"
           className="flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary"
@@ -44,6 +60,28 @@ export function Header() {
           aria-label="Navegación principal"
         >
           <ul className="flex items-center gap-8 font-sans text-base lg:gap-11">
+            <li className="relative group">
+              <Link
+                href="#servicios"
+                className="text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground"
+              >
+                Servicios
+              </Link>
+              <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <ul className="rounded-lg border border-border bg-askill-secondary py-2 shadow-lg">
+                  {serviceLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="block px-4 py-2 text-sm text-askill-secondary-foreground/90 hover:bg-white/10 hover:text-askill-secondary-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -62,7 +100,7 @@ export function Header() {
           className="inline-flex items-center justify-center rounded-md p-2 md:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <Image
@@ -83,6 +121,41 @@ export function Header() {
           aria-label="Navegación móvil"
         >
           <ul className="flex flex-col gap-4 font-sans text-base">
+            <li>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between text-left text-askill-secondary-foreground/90"
+                aria-expanded={isServicesOpen}
+                onClick={() => setIsServicesOpen((open) => !open)}
+              >
+                Servicios
+                <span aria-hidden>{isServicesOpen ? '−' : '+'}</span>
+              </button>
+              {isServicesOpen ? (
+                <ul className="mt-3 flex flex-col gap-2 border-l border-white/10 pl-4">
+                  <li>
+                    <Link
+                      href="#servicios"
+                      className="block text-sm text-askill-secondary-foreground/80 hover:text-askill-secondary-foreground"
+                      onClick={closeMenu}
+                    >
+                      Ver todos
+                    </Link>
+                  </li>
+                  {serviceLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="block text-sm text-askill-secondary-foreground/80 hover:text-askill-secondary-foreground"
+                        onClick={closeMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </li>
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -98,5 +171,5 @@ export function Header() {
         </nav>
       ) : null}
     </header>
-  );
+  )
 }
