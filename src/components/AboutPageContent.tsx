@@ -37,7 +37,7 @@ export function AboutPageContent() {
     <section className="bg-background">
       <div className={`${siteContainerClassName} py-16 sm:py-20 lg:py-24`}>
         <div className="mx-auto max-w-3xl text-center lg:max-w-4xl">
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-askill-primary sm:text-4xl lg:text-5xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {aboutContent.title}
           </h1>
 
