@@ -1,6 +1,19 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+import { isNavItemActive, mainNavItems } from '@/content/navigation'
+
+function footerNavLinkClassName(isActive: boolean) {
+  return isActive
+    ? 'font-medium text-foreground'
+    : 'hover:text-foreground'
+}
 
 export function SiteFooter() {
+  const pathname = usePathname()
+
   return (
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 py-10 text-sm text-muted-foreground">
@@ -8,20 +21,25 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} Automation Services with Skill S.A.S
           </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/#servicios" className="hover:text-foreground">
-              Servicios
-            </Link>
-            <Link href="/#plataforma-digital" className="hover:text-foreground">
-              Plataforma digital
-            </Link>
-            <Link href="/sobre-nosotros" className="hover:text-foreground">
-              Sobre nosotros
-            </Link>
-            <Link href="/contacto" className="hover:text-foreground">
-              Contacto
-            </Link>
-          </div>
+          <nav aria-label="Navegación del pie de página">
+            <ul className="flex flex-wrap items-center gap-4">
+              {mainNavItems.map((item) => {
+                const isActive = isNavItemActive(pathname, item.href)
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={footerNavLinkClassName(isActive)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

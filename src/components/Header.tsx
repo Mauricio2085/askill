@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import menuHamburger from '@/assets/statics/menu-hamburguesa.svg'
@@ -9,27 +10,31 @@ import {
   engineeringServices,
   platformService,
 } from '@/content/services'
+import { isNavItemActive, mainNavItems } from '@/content/navigation'
 import { askillLogoImageSrc } from '@/lib/askill-logo'
-
-const navItems = [
-  { href: '/sobre-nosotros', label: 'Sobre nosotros' },
-  { href: '/contacto', label: 'Contacto' },
-] as const
 
 const serviceLinks = [
   ...engineeringServices.map((service) => ({
-    href: `/#${service.id}`,
+    href: `/servicios#${service.id}`,
     label: service.title,
   })),
   {
-    href: `/#${platformService.id}`,
+    href: `/servicios#${platformService.id}`,
     label: platformService.title,
   },
 ]
 
+function headerNavLinkClassName(isActive: boolean) {
+  return isActive
+    ? 'font-semibold text-askill-primary'
+    : 'text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground'
+}
+
 export function Header() {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const isServicesActive = isNavItemActive(pathname, '/servicios')
 
   function closeMenu() {
     setIsMenuOpen(false)
@@ -62,8 +67,9 @@ export function Header() {
           <ul className="flex items-center gap-8 font-sans text-base lg:gap-11">
             <li className="group relative">
               <Link
-                href="/#servicios"
-                className="text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground"
+                href="/servicios"
+                aria-current={isServicesActive ? 'page' : undefined}
+                className={headerNavLinkClassName(isServicesActive)}
               >
                 Servicios
               </Link>
@@ -82,16 +88,23 @@ export function Header() {
                 </ul>
               </div>
             </li>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {mainNavItems
+              .filter((item) => item.href !== '/servicios')
+              .map((item) => {
+                const isActive = isNavItemActive(pathname, item.href)
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={headerNavLinkClassName(isActive)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              })}
           </ul>
         </nav>
 
@@ -124,7 +137,7 @@ export function Header() {
             <li>
               <button
                 type="button"
-                className="flex w-full items-center justify-between text-left text-askill-secondary-foreground/90"
+                className={`flex w-full items-center justify-between text-left ${headerNavLinkClassName(isServicesActive)}`}
                 aria-expanded={isServicesOpen}
                 onClick={() => setIsServicesOpen((open) => !open)}
               >
@@ -135,7 +148,8 @@ export function Header() {
                 <ul className="mt-3 flex flex-col gap-2 border-l border-white/10 pl-4">
                   <li>
                     <Link
-                      href="/#servicios"
+                      href="/servicios"
+                      aria-current={isServicesActive ? 'page' : undefined}
                       className="block text-sm text-askill-secondary-foreground/80 hover:text-askill-secondary-foreground"
                       onClick={closeMenu}
                     >
@@ -156,17 +170,24 @@ export function Header() {
                 </ul>
               ) : null}
             </li>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block text-askill-secondary-foreground/90 transition-colors hover:text-askill-secondary-foreground"
-                  onClick={closeMenu}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {mainNavItems
+              .filter((item) => item.href !== '/servicios')
+              .map((item) => {
+                const isActive = isNavItemActive(pathname, item.href)
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`block ${headerNavLinkClassName(isActive)}`}
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              })}
           </ul>
         </nav>
       ) : null}

@@ -20,7 +20,7 @@ export default function AboutPage() {
         <AboutPageContent />
         <ContactCta
           {...contactCtaByPage.about}
-          secondaryLink={{ href: '/#servicios', label: 'Ver servicios' }}
+          secondaryLink={{ href: '/servicios', label: 'Ver servicios' }}
         />
       </main>
       <SiteFooter />
