@@ -140,3 +140,11 @@ export const platformService = {
     'Complementamos la ingeniería en planta con módulos SaaS para monitoreo, seguridad y gestión de activos, integrados en una sola experiencia.',
   image: scada,
 }
+
+export const servicesTeaserContent = {
+  eyebrow: 'Ingeniería + Industria 4.0',
+  title: 'Nuestros servicios',
+  description:
+    'Desde automatización en planta hasta monitoreo en la nube: soluciones para diagnosticar, controlar y escalar tu operación industrial.',
+  ctaLabel: 'Ver todos los servicios',
+} as const

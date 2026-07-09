@@ -50,4 +50,11 @@ export const contactCtaByPage = {
       "Combinamos planificación rigurosa, ejecución impecable y resultados sostenibles. Cuéntanos tu reto y te proponemos el camino técnico más claro.",
     buttonLabel: "Contáctanos",
   },
+  services: {
+    eyebrow: "Hablemos de tu operación",
+    title: "¿Cuál de estos retos tiene tu planta hoy?",
+    description:
+      "Cuéntanos tu contexto y te proponemos el servicio de ingeniería o el módulo digital más adecuado para tu operación.",
+    buttonLabel: "Contáctanos",
+  },
 } satisfies Record<string, ContactCtaContent>;
