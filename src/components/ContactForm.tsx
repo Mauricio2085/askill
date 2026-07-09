@@ -6,6 +6,9 @@ import { contactContent } from '@/content/contact'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+
 const inputClassName =
   'h-11 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60'
 
@@ -18,6 +21,13 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    if (!accessKey) {
+      setStatus('error')
+      setFeedbackMessage(contactContent.form.errorMessage)
+      return
+    }
+
     setStatus('submitting')
     setFeedbackMessage('')
 
@@ -25,10 +35,16 @@ export function ContactForm() {
     const formData = new FormData(form)
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
         body: JSON.stringify({
+          access_key: accessKey,
+          subject: 'Nuevo contacto — ASKILL S.A.S',
+          from_name: 'ASKILL Web',
           name: formData.get('name'),
           company: formData.get('company'),
           email: formData.get('email'),
@@ -45,12 +61,12 @@ export function ContactForm() {
 
       if (!response.ok || !result.success) {
         setStatus('error')
-        setFeedbackMessage(result.message ?? contactContent.form.errorMessage)
+        setFeedbackMessage(contactContent.form.errorMessage)
         return
       }
 
       setStatus('success')
-      setFeedbackMessage(result.message ?? contactContent.form.successMessage)
+      setFeedbackMessage(contactContent.form.successMessage)
       form.reset()
     } catch {
       setStatus('error')
