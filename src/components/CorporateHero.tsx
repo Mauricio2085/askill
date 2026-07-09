@@ -1,6 +1,9 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import { siteContainerClassName } from '@/lib/site-container'
+import { siteContainerClassName } from "@/lib/site-container";
+
+const heroHighlightCardClassName =
+  "rounded-lg border border-white/10 bg-white/5 p-4 text-left transition-all duration-300 hover:border-white/45 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_12px_40px_rgba(0,0,0,0.25)]";
 
 export function CorporateHero() {
   return (
@@ -15,9 +18,9 @@ export function CorporateHero() {
             Ingeniería y digitalización para operaciones industriales
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg">
-            Desde la programación de PLC en tablero hasta el monitoreo en la nube.
-            Acompañamos tu planta con automatización, modernización de activos y
-            una plataforma SaaS para SST, IIoT y gestión de activos.
+            Desde la programación de PLC en tablero hasta el monitoreo en la
+            nube. Acompañamos tu planta con automatización, modernización de
+            activos y una plataforma SaaS para SST, IIoT y gestión de activos.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -36,19 +39,19 @@ export function CorporateHero() {
           </div>
 
           <dl className="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-3">
-            <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-left">
+            <div className={heroHighlightCardClassName}>
               <dt className="text-xs font-medium text-white/70">Ingeniería</dt>
               <dd className="mt-1 text-sm font-semibold text-white">
                 PLC, VDF, instrumentación y retrofitting
               </dd>
             </div>
-            <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-left">
+            <div className={heroHighlightCardClassName}>
               <dt className="text-xs font-medium text-white/70">Planta</dt>
               <dd className="mt-1 text-sm font-semibold text-white">
                 Diagnóstico, puesta en marcha y continuidad operativa
               </dd>
             </div>
-            <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-left sm:col-span-1">
+            <div className={`${heroHighlightCardClassName} sm:col-span-1`}>
               <dt className="text-xs font-medium text-white/70">Digital</dt>
               <dd className="mt-1 text-sm font-semibold text-white">
                 IIoT, SST y gestión de activos en la nube
@@ -58,5 +61,5 @@ export function CorporateHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
