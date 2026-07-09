@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import type { EngineeringService } from '@/content/services'
+import { siteContainerClassName } from '@/lib/site-container'
 
 type ServiceBlockProps = {
   service: EngineeringService
@@ -14,7 +15,7 @@ export function ServiceBlock({ service, reversed = false }: ServiceBlockProps) {
       className="scroll-mt-24 border-b border-border last:border-b-0"
     >
       <div
-        className={`container mx-auto grid items-center gap-8 px-4 py-14 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20 ${
+        className={`${siteContainerClassName} grid items-center gap-8 py-14 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20 ${
           reversed ? 'lg:[&>*:first-child]:order-2' : ''
         }`}
       >

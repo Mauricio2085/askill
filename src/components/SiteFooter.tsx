@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { isNavItemActive, mainNavItems } from '@/content/navigation'
+import { siteContainerClassName } from '@/lib/site-container'
 
 function footerNavLinkClassName(isActive: boolean) {
   return isActive
@@ -16,7 +17,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-10 text-sm text-muted-foreground">
+      <div className={`${siteContainerClassName} py-10 text-sm text-muted-foreground`}>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Automation Services with Skill S.A.S

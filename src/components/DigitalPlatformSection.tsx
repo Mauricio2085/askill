@@ -8,6 +8,7 @@ import {
   platformService,
   type PlatformModule,
 } from '@/content/services'
+import { siteContainerClassName } from '@/lib/site-container'
 
 function ModuleContent({ module }: { module: PlatformModule }) {
   return (
@@ -70,7 +71,7 @@ export function DigitalPlatformSection() {
 
   return (
     <article id={platformService.id} className="scroll-mt-24 bg-secondary/20">
-      <div className="container mx-auto px-4 py-14 sm:py-16 lg:py-20">
+      <div className={`${siteContainerClassName} py-14 sm:py-16 lg:py-20`}>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">

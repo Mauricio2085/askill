@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import type { ContactCtaContent } from '@/content/contact'
+import { siteContainerClassName } from '@/lib/site-container'
 
 type ContactCtaProps = ContactCtaContent & {
   secondaryLink?: {
@@ -18,7 +19,7 @@ export function ContactCta({
 }: ContactCtaProps) {
   return (
     <section className="border-t border-border bg-secondary/20">
-      <div className="container mx-auto px-4 py-14 text-center sm:py-16 lg:py-20">
+      <div className={`${siteContainerClassName} py-14 text-center sm:py-16 lg:py-20`}>
         {eyebrow ? (
           <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
             {eyebrow}

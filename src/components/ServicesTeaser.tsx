@@ -6,11 +6,12 @@ import {
   platformService,
   servicesTeaserContent,
 } from '@/content/services'
+import { siteContainerClassName } from '@/lib/site-container'
 
 export function ServicesTeaser() {
   return (
     <section className="border-t border-border bg-background">
-      <div className="container mx-auto px-4 py-16 sm:py-20">
+      <div className={`${siteContainerClassName} py-16 sm:py-20`}>
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
             {servicesTeaserContent.eyebrow}

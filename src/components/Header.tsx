@@ -12,6 +12,7 @@ import {
 } from '@/content/services'
 import { isNavItemActive, mainNavItems } from '@/content/navigation'
 import { askillLogoImageSrc } from '@/lib/askill-logo'
+import { siteContainerClassName } from '@/lib/site-container'
 
 const serviceLinks = [
   ...engineeringServices.map((service) => ({
@@ -43,7 +44,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-askill-secondary text-askill-secondary-foreground">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-3.5 lg:px-10">
+      <div className={`${siteContainerClassName} flex items-center justify-between gap-4 py-3 sm:py-3.5`}>
         <Link
           href="/"
           className="flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary"
@@ -130,7 +131,7 @@ export function Header() {
       {isMenuOpen ? (
         <nav
           id="mobile-navigation"
-          className="border-t border-border bg-askill-secondary px-4 py-4 md:hidden"
+          className={`${siteContainerClassName} border-t border-border bg-askill-secondary py-4 md:hidden`}
           aria-label="Navegación móvil"
         >
           <ul className="flex flex-col gap-4 font-sans text-base">

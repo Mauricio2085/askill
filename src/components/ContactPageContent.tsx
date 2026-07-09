@@ -1,10 +1,11 @@
 import { ContactForm } from '@/components/ContactForm'
 import { contactContent } from '@/content/contact'
+import { siteContainerClassName } from '@/lib/site-container'
 
 export function ContactPageContent() {
   return (
     <section className="bg-background">
-      <div className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
+      <div className={`${siteContainerClassName} py-16 sm:py-20 lg:py-24`}>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-askill-primary sm:text-4xl lg:text-5xl">
             {contactContent.title}

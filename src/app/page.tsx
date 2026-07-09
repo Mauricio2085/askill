@@ -5,6 +5,7 @@ import { Jumbotron } from '@/components/Jumbotron'
 import { ServicesTeaser } from '@/components/ServicesTeaser'
 import { SiteFooter } from '@/components/SiteFooter'
 import { contactCtaByPage } from '@/content/contact'
+import { siteContainerClassName } from '@/lib/site-container'
 import Link from 'next/link'
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
         <ServicesTeaser />
 
         <section className="border-t border-border bg-secondary/20">
-          <div className="container mx-auto px-4 py-14 text-center sm:py-16">
+          <div className={`${siteContainerClassName} py-14 text-center sm:py-16`}>
             <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
               ASKILL S.A.S
             </p>

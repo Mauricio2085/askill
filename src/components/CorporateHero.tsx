@@ -1,10 +1,12 @@
 import Link from 'next/link'
 
+import { siteContainerClassName } from '@/lib/site-container'
+
 export function CorporateHero() {
   return (
     <section className="relative overflow-hidden bg-background">
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-askill-secondary/80 to-background" />
-      <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
+      <div className={`${siteContainerClassName} py-12 sm:py-16 lg:py-20`}>
         <div className="mx-auto max-w-4xl text-center">
           <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
             ASKILL S.A.S · Automatización industrial

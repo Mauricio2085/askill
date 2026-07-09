@@ -1,4 +1,5 @@
 import { aboutContent } from '@/content/about'
+import { siteContainerClassName } from '@/lib/site-container'
 
 function PrincipleCard({
   index,
@@ -34,7 +35,7 @@ function PrincipleCard({
 export function AboutPageContent() {
   return (
     <section className="bg-background">
-      <div className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
+      <div className={`${siteContainerClassName} py-16 sm:py-20 lg:py-24`}>
         <div className="mx-auto max-w-3xl text-center lg:max-w-4xl">
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-askill-primary sm:text-4xl lg:text-5xl">
             {aboutContent.title}

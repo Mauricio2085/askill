@@ -1,4 +1,5 @@
 import { engineeringServices } from '@/content/services'
+import { siteContainerClassName } from '@/lib/site-container'
 
 import { DigitalPlatformSection } from '@/components/DigitalPlatformSection'
 import { ServiceBlock } from '@/components/ServiceBlock'
@@ -6,7 +7,7 @@ import { ServiceBlock } from '@/components/ServiceBlock'
 export function ServicesSection() {
   return (
     <section id="servicios" className="scroll-mt-24">
-      <div className="container mx-auto px-4 pb-4 pt-16 text-center sm:pt-20">
+      <div className={`${siteContainerClassName} pb-4 pt-16 text-center sm:pt-20`}>
         <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           Nuestros servicios
         </h2>
