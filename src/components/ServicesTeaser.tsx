@@ -8,6 +8,8 @@ import {
 } from '@/content/services'
 import { siteContainerClassName } from '@/lib/site-container'
 
+import { ServiceValueCards } from '@/components/ServiceValueCards'
+
 export function ServicesTeaser() {
   return (
     <section className="border-t border-border bg-background">
@@ -24,7 +26,21 @@ export function ServicesTeaser() {
           </p>
         </div>
 
-        <ul className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
+        <ServiceValueCards
+          limit={servicesTeaserContent.valuePropsPreviewCount}
+          className="mt-12 lg:mt-14"
+        />
+
+        <div className="mx-auto mt-14 max-w-3xl text-center lg:mt-16">
+          <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
+            Catálogo técnico
+          </p>
+          <h3 className="mt-3 text-balance text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+            Soluciones de ingeniería y plataforma digital
+          </h3>
+        </div>
+
+        <ul className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-6">
           {engineeringServices.map((service) => (
             <li key={service.id}>
               <Link

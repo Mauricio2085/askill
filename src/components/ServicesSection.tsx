@@ -1,20 +1,44 @@
-import { engineeringServices } from '@/content/services'
-import { siteContainerClassName } from '@/lib/site-container'
+import { engineeringServices, servicesPageIntro } from "@/content/services";
+import { siteContainerClassName } from "@/lib/site-container";
 
-import { DigitalPlatformSection } from '@/components/DigitalPlatformSection'
-import { ServiceBlock } from '@/components/ServiceBlock'
+import { DigitalPlatformSection } from "@/components/DigitalPlatformSection";
+import { ServiceBlock } from "@/components/ServiceBlock";
+import { ServiceValueCards } from "@/components/ServiceValueCards";
 
 export function ServicesSection() {
   return (
     <section id="servicios" className="scroll-mt-24">
-      <div className={`${siteContainerClassName} pb-4 pt-16 text-center sm:pt-20`}>
+      <div
+        className={`${siteContainerClassName} pb-4 pt-16 text-center sm:pt-20`}
+      >
         <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Nuestros servicios
         </h2>
         <p className="mx-auto mt-4 max-w-3xl text-pretty text-muted-foreground sm:text-lg">
-          Ingeniería en planta y plataforma digital para diagnosticar, automatizar
-          y supervisar tu operación industrial con resultados medibles.
+          {servicesPageIntro}
         </p>
+      </div>
+
+      <div className={`${siteContainerClassName} pb-14 sm:pb-16 lg:pb-20`}>
+        <ServiceValueCards />
+      </div>
+
+      <div className="border-t border-border">
+        <div
+          className={`${siteContainerClassName} pb-4 pt-14 text-center sm:pt-16`}
+        >
+          <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
+            Catálogo técnico
+          </p>
+          <h3 className="mx-auto mt-3 max-w-3xl text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            Soluciones de ingeniería y plataforma digital
+          </h3>
+          <p className="mx-auto mt-4 max-w-3xl text-pretty text-muted-foreground sm:text-lg">
+            Ingeniería en planta y software en la nube para diagnosticar,
+            automatizar y supervisar tu operación industrial con resultados
+            medibles.
+          </p>
+        </div>
       </div>
 
       {engineeringServices.map((service, index) => (
@@ -27,5 +51,5 @@ export function ServicesSection() {
 
       <DigitalPlatformSection />
     </section>
-  )
+  );
 }
