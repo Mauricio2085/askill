@@ -2,7 +2,7 @@ import { ContactCta } from '@/components/ContactCta'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Header } from '@/components/Header'
 import { Jumbotron } from '@/components/Jumbotron'
-import { ServicesSection } from '@/components/ServicesSection'
+import { ServicesTeaser } from '@/components/ServicesTeaser'
 import { SiteFooter } from '@/components/SiteFooter'
 import { contactCtaByPage } from '@/content/contact'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ export default function Home() {
 
       <main>
         <CorporateHero />
-        <ServicesSection />
+        <ServicesTeaser />
 
         <section className="border-t border-border bg-secondary/20">
           <div className="container mx-auto px-4 py-14 text-center sm:py-16">
