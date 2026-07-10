@@ -6,6 +6,11 @@ import { usePathname } from 'next/navigation'
 import { isNavItemActive, mainNavItems } from '@/content/navigation'
 import { siteContainerClassName } from '@/lib/site-container'
 
+const legalNavItems = [
+  { href: '/politica-privacidad', label: 'Política de privacidad' },
+  { href: '/terminos-servicio', label: 'Términos de servicio' },
+] as const
+
 function footerNavLinkClassName(isActive: boolean) {
   return isActive
     ? 'font-medium text-foreground'
@@ -14,17 +19,18 @@ function footerNavLinkClassName(isActive: boolean) {
 
 export function SiteFooter() {
   const pathname = usePathname()
+  const footerNavItems = [...mainNavItems, ...legalNavItems]
 
   return (
     <footer className="border-t bg-background">
       <div className={`${siteContainerClassName} py-10 text-sm text-muted-foreground`}>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>
             © {new Date().getFullYear()} Automation Services with Skill S.A.S
           </p>
           <nav aria-label="Navegación del pie de página">
-            <ul className="flex flex-wrap items-center gap-4">
-              {mainNavItems.map((item) => {
+            <ul className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
+              {footerNavItems.map((item) => {
                 const isActive = isNavItemActive(pathname, item.href)
 
                 return (
