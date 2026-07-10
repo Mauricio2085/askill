@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 import {
   engineeringServices,
   platformService,
   servicesTeaserContent,
-} from '@/content/services'
-import { siteContainerClassName } from '@/lib/site-container'
+} from "@/content/services";
+import { siteContainerClassName } from "@/lib/site-container";
 
-import { ServiceValueCards } from '@/components/ServiceValueCards'
+import { ServiceValueCards } from "@/components/ServiceValueCards";
 
 export function ServicesTeaser() {
   return (
@@ -100,5 +100,5 @@ export function ServicesTeaser() {
         </div>
       </div>
     </section>
-  )
+  );
 }
