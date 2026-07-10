@@ -7,9 +7,9 @@ import documentacionIcon from "@/assets/statics/documentacion.png";
 import ahorrarDineroIcon from "@/assets/statics/ahorrar-dinero.png";
 import ingenieroIcon from "@/assets/statics/ingeniero.png";
 import instrumentation from "@/assets/statics/sensores.jpeg";
-import mitsubishi from "@/assets/statics/variadores.jpg";
+import mitsubishi from "@/assets/statics/variador.png";
 import plc from "@/assets/statics/plc.jpg";
-import robotic from "@/assets/statics/robotic.jpg";
+import retrofitting from "@/assets/statics/gabinete_control.jpg";
 import iiot from "@/assets/statics/iiot.jpeg";
 
 export type PlatformModule = {
@@ -135,7 +135,7 @@ export const engineeringServices: EngineeringService[] = [
       "Retrofitting integral. Retiramos el control electrónico descontinuado y lo reemplazamos por tecnología moderna (PLC, HMI y drivers actuales), conservando la máquina existente.",
     impact:
       "Revives un activo estratégico por una fracción de lo que costaría una máquina nueva, garantizas stock de repuestos locales y actualizas los sistemas de seguridad de la máquina.",
-    image: robotic,
+    image: retrofitting,
   },
 ];
 
