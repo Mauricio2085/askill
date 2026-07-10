@@ -1,3 +1,6 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+
 import { ContactCta } from '@/components/ContactCta'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Header } from '@/components/Header'
@@ -6,7 +9,28 @@ import { ServicesTeaser } from '@/components/ServicesTeaser'
 import { SiteFooter } from '@/components/SiteFooter'
 import { contactCtaByPage } from '@/content/contact'
 import { siteContainerClassName } from '@/lib/site-container'
-import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'ASKILL S.A.S | Automatización industrial y digitalización',
+  },
+  description:
+    'Ingeniería y digitalización para operaciones industriales en Pereira, Colombia. Automatización PLC, VDF, instrumentación, retrofitting, software a la medida y plataforma IIoT, SST y Activos.',
+  openGraph: {
+    title: 'ASKILL S.A.S | Automatización industrial y digitalización',
+    description:
+      'Ingeniería y digitalización para operaciones industriales. Automatización, software a la medida y plataforma digital desde Pereira, Colombia.',
+    url: '/',
+  },
+  twitter: {
+    title: 'ASKILL S.A.S | Automatización industrial y digitalización',
+    description:
+      'Ingeniería y digitalización para operaciones industriales. Automatización, software a la medida y plataforma digital desde Pereira, Colombia.',
+  },
+  alternates: {
+    canonical: '/',
+  },
+}
 
 export default function Home() {
   return (

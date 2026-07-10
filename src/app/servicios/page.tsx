@@ -7,9 +7,18 @@ import { SiteFooter } from '@/components/SiteFooter'
 import { contactCtaByPage } from '@/content/contact'
 
 export const metadata: Metadata = {
-  title: 'Servicios | ASKILL S.A.S',
+  title: 'Servicios',
   description:
     'Automatización industrial, control de motores, instrumentación, retrofitting, desarrollo de software a la medida y plataforma digital IIoT, SST y Activos para operaciones industriales.',
+  openGraph: {
+    title: 'Servicios | ASKILL S.A.S',
+    description:
+      'Automatización industrial, software a la medida y plataforma digital IIoT, SST y Activos.',
+    url: '/servicios',
+  },
+  alternates: {
+    canonical: '/servicios',
+  },
 }
 
 export default function ServicesPage() {

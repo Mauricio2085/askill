@@ -6,9 +6,17 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { readLegalMarkdown } from "@/lib/read-legal-markdown";
 
 export const metadata: Metadata = {
-  title: "Términos de servicio | ASKILL S.A.S",
+  title: "Términos de servicio",
   description:
     "Términos y condiciones de uso del sitio web de ASKILL S.A.S.",
+  openGraph: {
+    title: "Términos de servicio | ASKILL S.A.S",
+    description: "Términos y condiciones de uso del sitio web de ASKILL S.A.S.",
+    url: "/terminos-servicio",
+  },
+  alternates: {
+    canonical: "/terminos-servicio",
+  },
 };
 
 export default async function TermsOfServicePage() {
