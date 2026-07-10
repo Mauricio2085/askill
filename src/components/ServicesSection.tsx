@@ -11,9 +11,9 @@ export function ServicesSection() {
       <div
         className={`${siteContainerClassName} pb-4 pt-16 text-center sm:pt-20`}
       >
-        <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Nuestros servicios
-        </h2>
+        </h1>
         <p className="mx-auto mt-4 max-w-3xl text-pretty text-muted-foreground sm:text-lg">
           {servicesPageIntro}
         </p>
