@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-import jumbotronImage from '@/assets/statics/eplan-engineering-standard.jpeg'
+import jumbotronImage from "@/assets/statics/Jumbotron_Askill.png";
 
 export function Jumbotron() {
   return (
@@ -23,5 +23,5 @@ export function Jumbotron() {
         />
       </div>
     </section>
-  )
+  );
 }
