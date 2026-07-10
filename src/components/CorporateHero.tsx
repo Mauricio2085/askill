@@ -42,7 +42,7 @@ export function CorporateHero() {
             <div className={heroHighlightCardClassName}>
               <dt className="text-xs font-medium text-white/70">Ingeniería</dt>
               <dd className="mt-1 text-sm font-semibold text-white">
-                PLC, VDF, instrumentación y retrofitting
+                PLC, VDF, instrumentación, retrofitting y desarrollo de software
               </dd>
             </div>
             <div className={heroHighlightCardClassName}>
