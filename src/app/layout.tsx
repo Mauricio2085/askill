@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { DynaPuff, Montserrat, Roboto, Rowdies, Ubuntu } from 'next/font/google'
 
+import { OrganizationJsonLd } from '@/components/OrganizationJsonLd'
 import {
   defaultSiteDescription,
   getSiteUrl,
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body
         className={`${ubuntu.variable} ${montserrat.variable} ${dynaPuff.variable} ${roboto.variable} ${rowdies.variable} antialiased`}
       >
+        <OrganizationJsonLd />
         {children}
       </body>
     </html>
