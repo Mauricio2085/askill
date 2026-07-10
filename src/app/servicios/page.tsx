@@ -9,7 +9,7 @@ import { contactCtaByPage } from '@/content/contact'
 export const metadata: Metadata = {
   title: 'Servicios | ASKILL S.A.S',
   description:
-    'Automatización industrial, control de motores, instrumentación, retrofitting y plataforma digital IIoT, SST y Activos para operaciones industriales.',
+    'Automatización industrial, control de motores, instrumentación, retrofitting, desarrollo de software a la medida y plataforma digital IIoT, SST y Activos para operaciones industriales.',
 }
 
 export default function ServicesPage() {

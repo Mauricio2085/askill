@@ -31,12 +31,12 @@ export function ServicesSection() {
             Catálogo técnico
           </p>
           <h3 className="mx-auto mt-3 max-w-3xl text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Soluciones de ingeniería y plataforma digital
+            Soluciones de ingeniería, software y plataforma digital
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-pretty text-muted-foreground sm:text-lg">
-            Ingeniería en planta y software en la nube para diagnosticar,
-            automatizar y supervisar tu operación industrial con resultados
-            medibles.
+            Ingeniería en planta, software a la medida y plataforma en la nube
+            para diagnosticar, automatizar y supervisar tu operación industrial
+            con resultados medibles.
           </p>
         </div>
       </div>

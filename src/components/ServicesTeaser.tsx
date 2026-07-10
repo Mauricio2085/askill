@@ -36,7 +36,7 @@ export function ServicesTeaser() {
             Catálogo técnico
           </p>
           <h3 className="mt-3 text-balance text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-            Soluciones de ingeniería y plataforma digital
+            Soluciones de ingeniería, software y plataforma digital
           </h3>
         </div>
 
@@ -47,7 +47,7 @@ export function ServicesTeaser() {
                 href={`/servicios#${service.id}`}
                 className="group flex h-full flex-col rounded-2xl border border-border bg-card p-5 transition-colors hover:border-askill-primary/50 sm:p-6"
               >
-                <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border bg-secondary/30">
+                <div className="relative mb-4 aspect-16/10 overflow-hidden rounded-xl border bg-secondary/30">
                   <Image
                     src={service.image}
                     alt=""
@@ -69,7 +69,7 @@ export function ServicesTeaser() {
             </li>
           ))}
 
-          <li className="sm:col-span-2 lg:col-span-1">
+          <li>
             <Link
               href={`/servicios#${platformService.id}`}
               className="group flex h-full flex-col rounded-2xl border border-dashed border-askill-primary/40 bg-askill-primary/5 p-5 transition-colors hover:border-askill-primary sm:p-6"
