@@ -8,8 +8,9 @@ import ahorrarDineroIcon from "@/assets/statics/ahorrar-dinero.png";
 import ingenieroIcon from "@/assets/statics/ingeniero.png";
 import instrumentation from "@/assets/statics/sensores.jpeg";
 import mitsubishi from "@/assets/statics/variador.png";
-import plc from "@/assets/statics/plc.jpg";
+import plc from "@/assets/statics/plc.png";
 import retrofitting from "@/assets/statics/gabinete_control.jpg";
+import software from "@/assets/statics/software.png";
 import iiot from "@/assets/statics/iiot.jpeg";
 
 export type PlatformModule = {
@@ -136,6 +137,18 @@ export const engineeringServices: EngineeringService[] = [
     impact:
       "Revives un activo estratégico por una fracción de lo que costaría una máquina nueva, garantizas stock de repuestos locales y actualizas los sistemas de seguridad de la máquina.",
     image: retrofitting,
+  },
+  {
+    id: "desarrollo-software",
+    title: "Desarrollo de Software",
+    subtitle: "Aplicaciones a la medida para operaciones industriales",
+    problem:
+      "Procesos críticos en Excel, WhatsApp o papel; sistemas desconectados entre planta, almacén y administración; o herramientas genéricas que no reflejan cómo opera realmente la empresa.",
+    solution:
+      "Diseñamos e implementamos software a la medida —web, móvil o integraciones— alineado a tus flujos: digitalización de procesos, paneles de control, APIs y conexión con equipos o sistemas existentes.",
+    impact:
+      "Menos errores manuales, trazabilidad confiable, decisiones con datos propios y una herramienta que crece con tu operación sin forzar procesos ajenos a tu planta.",
+    image: software,
   },
 ];
 
