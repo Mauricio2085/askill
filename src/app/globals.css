@@ -29,10 +29,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
 
   --font-sans: var(--font-ubuntu), ui-sans-serif, system-ui, sans-serif;
-  --font-montserrat: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-dynapuff: var(--font-dynapuff), ui-sans-serif, system-ui, sans-serif;
-  --font-roboto: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
-  --font-rowdies: var(--font-rowdies), ui-sans-serif, system-ui, sans-serif;
 
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;
