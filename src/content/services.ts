@@ -6,12 +6,12 @@ import tiempoIcon from "@/assets/statics/Tiempo.png";
 import documentacionIcon from "@/assets/statics/documentacion.png";
 import ahorrarDineroIcon from "@/assets/statics/ahorrar-dinero.png";
 import ingenieroIcon from "@/assets/statics/ingeniero.png";
-import instrumentation from "@/assets/statics/sensores.jpeg";
+import instrumentation from "@/assets/statics/sensores.webp";
 import mitsubishi from "@/assets/statics/variador.webp";
 import plc from "@/assets/statics/plc.webp";
-import retrofitting from "@/assets/statics/gabinete_control.jpg";
+import retrofitting from "@/assets/statics/gabinete_control.webp";
 import software from "@/assets/statics/software.webp";
-import iiot from "@/assets/statics/iiot.jpeg";
+import iiot from "@/assets/statics/iiot.webp";
 
 export type PlatformModule = {
   id: string;
