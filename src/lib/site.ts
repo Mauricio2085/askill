@@ -38,7 +38,7 @@ export function getOrganizationJsonLd() {
     taxID: siteTaxId,
     url: siteUrl.toString(),
     logo: new URL("/icon.png", siteUrl).toString(),
-    image: new URL("/icon.png", siteUrl).toString(),
+    image: new URL("/opengraph-image.png", siteUrl).toString(),
     description: defaultSiteDescription,
     email: siteContact.email,
     telephone: siteContact.telephone,
