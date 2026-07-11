@@ -1,6 +1,6 @@
-import askillLogoImage from '@/assets/statics/Logo_Askill_sin_SAS.svg'
+import askillLogoImage from "@/assets/statics/Logo_Askill.svg";
 
 /** Logo corporativo ASKILL para `next/image`. */
-export const askillLogoImageSrc = askillLogoImage.src
+export const askillLogoImageSrc = askillLogoImage.src;
 
-export { askillLogoImage }
+export { askillLogoImage };
