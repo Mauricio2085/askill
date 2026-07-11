@@ -1,4 +1,4 @@
-import { mkdir } from "node:fs/promises";
+import { access, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -30,6 +30,24 @@ const jobs = [
     width: 1600,
     quality: 78,
   },
+  {
+    input: "iiot.jpeg",
+    output: "iiot.webp",
+    width: 1400,
+    quality: 78,
+  },
+  {
+    input: "sensores.jpeg",
+    output: "sensores.webp",
+    width: 1400,
+    quality: 78,
+  },
+  {
+    input: "gabinete_control.jpg",
+    output: "gabinete_control.webp",
+    width: 1400,
+    quality: 78,
+  },
 ];
 
 await mkdir(staticsDir, { recursive: true });
@@ -37,6 +55,13 @@ await mkdir(staticsDir, { recursive: true });
 for (const job of jobs) {
   const inputPath = path.join(staticsDir, job.input);
   const outputPath = path.join(staticsDir, job.output);
+
+  try {
+    await access(inputPath);
+  } catch {
+    console.log(`skip ${job.input} (missing)`);
+    continue;
+  }
 
   const before = await sharp(inputPath).metadata();
   const result = await sharp(inputPath)
@@ -51,10 +76,10 @@ for (const job of jobs) {
     .toFile(outputPath);
 
   const after = await sharp(outputPath).metadata();
-  const beforeMb = ((before.size ?? 0) / (1024 * 1024)).toFixed(2);
+  const beforeKb = ((before.size ?? 0) / 1024).toFixed(0);
   const afterKb = (result.size / 1024).toFixed(0);
 
   console.log(
-    `${job.input} (${before.width}x${before.height}, ${beforeMb}MB) → ${job.output} (${after.width}x${after.height}, ${afterKb}KB)`,
+    `${job.input} (${before.width}x${before.height}, ${beforeKb}KB) → ${job.output} (${after.width}x${after.height}, ${afterKb}KB)`,
   );
 }
