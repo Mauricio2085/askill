@@ -20,6 +20,9 @@ export function ServicesSection() {
       </div>
 
       <div className={`${siteContainerClassName} pb-14 sm:pb-16 lg:pb-20`}>
+        <h2 className="mx-auto mb-10 max-w-3xl text-balance text-center text-2xl font-semibold tracking-tight text-foreground sm:mb-12 sm:text-3xl">
+          Lo que nos caracteriza
+        </h2>
         <ServiceValueCards />
       </div>
 
@@ -30,9 +33,9 @@ export function ServicesSection() {
           <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
             Catálogo técnico
           </p>
-          <h3 className="mx-auto mt-3 max-w-3xl text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="mx-auto mt-3 max-w-3xl text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Soluciones de ingeniería, software y plataforma digital
-          </h3>
+          </h2>
           <p className="mx-auto mt-4 max-w-3xl text-pretty text-muted-foreground sm:text-lg">
             Ingeniería en planta, software a la medida y plataforma en la nube
             para diagnosticar, automatizar y supervisar tu operación industrial

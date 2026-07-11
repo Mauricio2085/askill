@@ -58,16 +58,21 @@ export function AboutPageContent() {
           </div>
         </div>
 
-        <ul className="mx-auto mt-14 grid max-w-6xl gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
-          {aboutContent.principles.map((principle, index) => (
-            <PrincipleCard
-              key={principle.title}
-              index={index}
-              title={principle.title}
-              description={principle.description}
-            />
-          ))}
-        </ul>
+        <div className="mx-auto mt-14 max-w-6xl lg:mt-16">
+          <h2 className="text-balance text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            Nuestros principios
+          </h2>
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {aboutContent.principles.map((principle, index) => (
+              <PrincipleCard
+                key={principle.title}
+                index={index}
+                title={principle.title}
+                description={principle.description}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

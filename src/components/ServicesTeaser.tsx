@@ -56,9 +56,9 @@ export function ServicesTeaser() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="text-base font-semibold leading-snug text-foreground sm:text-lg">
+                <h4 className="text-base font-semibold leading-snug text-foreground sm:text-lg">
                   {service.title}
-                </h3>
+                </h4>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {service.subtitle}
                 </p>
@@ -77,9 +77,9 @@ export function ServicesTeaser() {
               <p className="text-xs font-semibold uppercase tracking-wide text-askill-primary">
                 Servicio digital
               </p>
-              <h3 className="mt-2 text-base font-semibold leading-snug text-foreground sm:text-lg">
+              <h4 className="mt-2 text-base font-semibold leading-snug text-foreground sm:text-lg">
                 {platformService.title}
-              </h3>
+              </h4>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {platformService.subtitle}
               </p>
