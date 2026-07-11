@@ -135,6 +135,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Assetsbuild
-*/assets
+# Keep application media in git (imported via next/image from src/assets).
+# Do not ignore src/assets — Vercel needs these files at build time.
 
