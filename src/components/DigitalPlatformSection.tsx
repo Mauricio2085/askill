@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, type KeyboardEvent } from 'react'
 
 import {
   platformModules,
@@ -69,6 +69,43 @@ export function DigitalPlatformSection() {
     platformModules.find((module) => module.id === activeModuleId) ??
     platformModules[0]
 
+  function selectModule(moduleId: string) {
+    setActiveModuleId(moduleId)
+    requestAnimationFrame(() => {
+      document.getElementById(`tab-${moduleId}`)?.focus()
+    })
+  }
+
+  function handleTabListKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const currentIndex = platformModules.findIndex(
+      (module) => module.id === activeModuleId,
+    )
+    if (currentIndex < 0) return
+
+    const lastIndex = platformModules.length - 1
+    let nextIndex = currentIndex
+
+    switch (event.key) {
+      case 'ArrowRight':
+        nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1
+        break
+      case 'ArrowLeft':
+        nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1
+        break
+      case 'Home':
+        nextIndex = 0
+        break
+      case 'End':
+        nextIndex = lastIndex
+        break
+      default:
+        return
+    }
+
+    event.preventDefault()
+    selectModule(platformModules[nextIndex].id)
+  }
+
   return (
     <article id={platformService.id} className="scroll-mt-24 bg-secondary/20">
       <div className={`${siteContainerClassName} py-14 sm:py-16 lg:py-20`}>
@@ -101,7 +138,9 @@ export function DigitalPlatformSection() {
             <div
               role="tablist"
               aria-label="Módulos de la plataforma digital"
+              aria-orientation="horizontal"
               className="flex flex-wrap gap-2"
+              onKeyDown={handleTabListKeyDown}
             >
               {platformModules.map((module) => {
                 const isActive = module.id === activeModuleId
@@ -114,8 +153,9 @@ export function DigitalPlatformSection() {
                     id={`tab-${module.id}`}
                     aria-selected={isActive}
                     aria-controls={`panel-${module.id}`}
-                    onClick={() => setActiveModuleId(module.id)}
-                    className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors ${
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => selectModule(module.id)}
+                    className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
                       isActive
                         ? 'bg-askill-primary text-askill-primary-foreground'
                         : 'bg-secondary text-secondary-foreground hover:bg-accent'
@@ -131,6 +171,7 @@ export function DigitalPlatformSection() {
               role="tabpanel"
               id={`panel-${activeModule.id}`}
               aria-labelledby={`tab-${activeModule.id}`}
+              tabIndex={0}
             >
               <ModuleContent module={activeModule} />
             </div>
