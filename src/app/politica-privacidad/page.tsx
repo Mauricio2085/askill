@@ -26,7 +26,7 @@ export default async function PrivacyPolicyPage() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
-      <main>
+      <main id="main-content">
         <MarkdownDocument content={content} />
       </main>
       <SiteFooter />

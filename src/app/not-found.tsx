@@ -17,7 +17,7 @@ export default function NotFound() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
-      <main>
+      <main id="main-content">
         <section className="relative overflow-hidden border-b border-border">
           <div
             className="pointer-events-none absolute inset-0 bg-radial-gradient(ellipse_at_top,_rgba(238,117,47,0.12),_transparent_55%)"

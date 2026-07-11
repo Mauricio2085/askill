@@ -36,9 +36,9 @@ export default function Home() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
-      <Jumbotron />
 
-      <main>
+      <main id="main-content">
+        <Jumbotron />
         <CorporateHero />
         <ServicesTeaser />
 

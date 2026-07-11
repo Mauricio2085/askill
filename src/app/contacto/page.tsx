@@ -23,7 +23,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
-      <main>
+      <main id="main-content">
         <ContactPageContent />
       </main>
       <SiteFooter />

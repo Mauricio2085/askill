@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
-      <main>
+      <main id="main-content">
         <AboutPageContent />
         <ContactCta
           {...contactCtaByPage.about}

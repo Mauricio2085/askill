@@ -3,6 +3,7 @@ import { Ubuntu } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 
 import { OrganizationJsonLd } from '@/components/OrganizationJsonLd'
+import { SkipToContentLink } from '@/components/SkipToContentLink'
 import {
   defaultSiteDescription,
   getSiteUrl,
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`dark ${ubuntu.variable}`}>
       <body className="antialiased">
+        <SkipToContentLink />
         <OrganizationJsonLd />
         {children}
         <Analytics />
