@@ -1,3 +1,5 @@
+import { siteContact } from "@/lib/site";
+
 export type ContactCtaContent = {
   eyebrow?: string;
   title: string;
@@ -15,19 +17,22 @@ export const contactContent = {
     emailLabel: "Correo electrónico",
     phoneLabel: "Teléfono",
     messageLabel: "Mensaje",
+    privacyLabel:
+      "Autorizo el tratamiento de mis datos personales de acuerdo con la",
+    privacyLinkLabel: "Política de privacidad",
     submitLabel: "Enviar mensaje",
     submittingLabel: "Enviando...",
     helperText:
-      "Completa el formulario y nuestro equipo de ingeniería te contactará.",
+      "Completa el formulario y nuestro equipo te contactará desde ingeniería.",
     successMessage:
-      "¡Gracias! Recibimos tu mensaje y te responderemos pronto desde ingeniería.",
+      "¡Gracias! Recibimos tu mensaje y te responderemos pronto.",
     errorMessage:
       "No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo.",
   },
   info: {
     title: "Datos de contacto",
-    email: "ingenieria@askillco.com",
-    phone: "+57 310 678 9371",
+    email: siteContact.email,
+    phone: siteContact.telephoneDisplay,
     location: "Pereira, Risaralda — Colombia",
     hours: "Lunes a viernes, 8:00 a.m. – 5:00 p.m.",
     responseNote:

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, type FormEvent } from 'react'
 
 import { contactContent } from '@/content/contact'
@@ -28,10 +29,16 @@ export function ContactForm() {
       return
     }
 
+    const form = event.currentTarget
+
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
     setStatus('submitting')
     setFeedbackMessage('')
 
-    const form = event.currentTarget
     const formData = new FormData(form)
 
     try {
@@ -50,6 +57,7 @@ export function ContactForm() {
           email: formData.get('email'),
           phone: formData.get('phone'),
           message: formData.get('message'),
+          privacy_consent: formData.get('privacy') === 'on',
           botcheck: formData.get('botcheck'),
         }),
       })
@@ -89,7 +97,6 @@ export function ContactForm() {
         className="mt-8 space-y-5"
         aria-label="Formulario de contacto"
         onSubmit={handleSubmit}
-        noValidate
       >
         <input
           type="checkbox"
@@ -172,6 +179,26 @@ export function ContactForm() {
             className={textareaClassName}
             placeholder="Cuéntanos sobre tu proyecto o necesidad operativa"
           />
+        </label>
+
+        <label className="flex items-start gap-3 text-left">
+          <input
+            type="checkbox"
+            name="privacy"
+            required
+            disabled={isSubmitting}
+            className="mt-1 size-4 shrink-0 rounded border-border text-askill-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60"
+          />
+          <span className="text-sm leading-relaxed text-muted-foreground">
+            {contactContent.form.privacyLabel}{' '}
+            <Link
+              href="/politica-privacidad"
+              className="font-medium text-askill-primary underline-offset-4 hover:underline"
+            >
+              {contactContent.form.privacyLinkLabel}
+            </Link>
+            .
+          </span>
         </label>
 
         <div className="space-y-3">
