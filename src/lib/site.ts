@@ -10,7 +10,6 @@ export const defaultSiteDescription =
 
 export const siteContact = {
   email: "contacto@askillco.com",
-  engineeringEmail: "ingenieria@askillco.com",
   telephone: "+57-310-678-9371",
   telephoneDisplay: "+57 310 678 9371",
   locality: "Pereira",
