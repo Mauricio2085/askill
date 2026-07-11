@@ -7,10 +7,10 @@ import documentacionIcon from "@/assets/statics/documentacion.png";
 import ahorrarDineroIcon from "@/assets/statics/ahorrar-dinero.png";
 import ingenieroIcon from "@/assets/statics/ingeniero.png";
 import instrumentation from "@/assets/statics/sensores.jpeg";
-import mitsubishi from "@/assets/statics/variador.png";
-import plc from "@/assets/statics/plc.png";
+import mitsubishi from "@/assets/statics/variador.webp";
+import plc from "@/assets/statics/plc.webp";
 import retrofitting from "@/assets/statics/gabinete_control.jpg";
-import software from "@/assets/statics/software.png";
+import software from "@/assets/statics/software.webp";
 import iiot from "@/assets/statics/iiot.jpeg";
 
 export type PlatformModule = {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import jumbotronImage from "@/assets/statics/Jumbotron_Askill.png";
+import jumbotronImage from "@/assets/statics/Jumbotron_Askill.webp";
 
 export function Jumbotron() {
   return (
