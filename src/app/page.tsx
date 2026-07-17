@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+import { ClientsSection } from '@/components/ClientsSection'
 import { ContactCta } from '@/components/ContactCta'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Header } from '@/components/Header'
@@ -41,8 +42,9 @@ export default function Home() {
         <Jumbotron />
         <CorporateHero />
         <ServicesTeaser />
+        <ClientsSection />
 
-        <section className="border-t border-border bg-secondary/20">
+        <section className="border-t border-border bg-background">
           <div className={`${siteContainerClassName} py-14 text-center sm:py-16`}>
             <p className="text-sm font-semibold uppercase tracking-wide text-askill-primary">
               ASKILL S.A.S
