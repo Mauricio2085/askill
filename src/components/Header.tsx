@@ -16,7 +16,7 @@ import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 const platformLinkClassName =
-  'inline-flex h-10 items-center justify-center rounded-md border border-askill-primary bg-askill-primary px-4 text-sm font-semibold text-askill-primary-foreground transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary'
+  'inline-flex h-10 items-center justify-center rounded-md border border-askill-primary/40 bg-background px-4 text-sm font-semibold text-foreground transition-colors hover:border-askill-primary hover:text-askill-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary'
 
 const serviceLinks = [
   ...engineeringServices.map((service) => ({
