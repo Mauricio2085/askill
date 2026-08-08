@@ -12,7 +12,11 @@ import {
 } from '@/content/services'
 import { isNavItemActive, mainNavItems } from '@/content/navigation'
 import { askillLogoImageSrc } from '@/lib/askill-logo'
+import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
+
+const platformLinkClassName =
+  'inline-flex h-10 items-center justify-center rounded-md border border-askill-primary bg-askill-primary px-4 text-sm font-semibold text-askill-primary-foreground transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-askill-secondary'
 
 const serviceLinks = [
   ...engineeringServices.map((service) => ({
@@ -61,53 +65,61 @@ export function Header() {
           />
         </Link>
 
-        <nav
-          className="hidden items-center md:flex"
-          aria-label="Navegación principal"
-        >
-          <ul className="flex items-center gap-8 font-sans text-base lg:gap-11">
-            <li className="group relative">
-              <Link
-                href="/servicios"
-                aria-current={isServicesActive ? 'page' : undefined}
-                className={headerNavLinkClassName(isServicesActive)}
-              >
-                Servicios
-              </Link>
-              <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <ul className="rounded-lg border border-border bg-askill-secondary py-2 shadow-lg">
-                  {serviceLinks.map((link) => (
-                    <li key={link.href}>
+        <div className="hidden items-center gap-6 md:flex lg:gap-8">
+          <nav aria-label="Navegación principal">
+            <ul className="flex items-center gap-8 font-sans text-base lg:gap-11">
+              <li className="group relative">
+                <Link
+                  href="/servicios"
+                  aria-current={isServicesActive ? 'page' : undefined}
+                  className={headerNavLinkClassName(isServicesActive)}
+                >
+                  Servicios
+                </Link>
+                <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="rounded-lg border border-border bg-askill-secondary py-2 shadow-lg">
+                    {serviceLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="block px-4 py-2 text-sm text-askill-secondary-foreground/90 hover:bg-white/10 hover:text-askill-secondary-foreground"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+              {mainNavItems
+                .filter((item) => item.href !== '/servicios')
+                .map((item) => {
+                  const isActive = isNavItemActive(pathname, item.href)
+
+                  return (
+                    <li key={item.href}>
                       <Link
-                        href={link.href}
-                        className="block px-4 py-2 text-sm text-askill-secondary-foreground/90 hover:bg-white/10 hover:text-askill-secondary-foreground"
+                        href={item.href}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={headerNavLinkClassName(isActive)}
                       >
-                        {link.label}
+                        {item.label}
                       </Link>
                     </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-            {mainNavItems
-              .filter((item) => item.href !== '/servicios')
-              .map((item) => {
-                const isActive = isNavItemActive(pathname, item.href)
+                  )
+                })}
+            </ul>
+          </nav>
 
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={isActive ? 'page' : undefined}
-                      className={headerNavLinkClassName(isActive)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                )
-              })}
-          </ul>
-        </nav>
+          <a
+            href={sitePlatform.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={platformLinkClassName}
+          >
+            {sitePlatform.headerLabel}
+          </a>
+        </div>
 
         <button
           type="button"
@@ -189,6 +201,17 @@ export function Header() {
                   </li>
                 )
               })}
+            <li className="pt-2">
+              <a
+                href={sitePlatform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${platformLinkClassName} w-full`}
+                onClick={closeMenu}
+              >
+                {sitePlatform.headerLabel}
+              </a>
+            </li>
           </ul>
         </nav>
       ) : null}

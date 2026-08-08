@@ -17,11 +17,21 @@ export const siteContact = {
   country: "CO",
 } as const;
 
+/** SaaS app URL for returning customers. */
+export const sitePlatform = {
+  url: "https://app.askillco.com/login",
+  headerLabel: "Ingresar a plataforma",
+  footerLabel: "Ingresar a plataforma",
+  servicesCtaLabel: "Abrir plataforma",
+} as const;
+
 export function getSiteUrl() {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
   if (configured) {
-    return new URL(configured.endsWith("/") ? configured.slice(0, -1) : configured);
+    return new URL(
+      configured.endsWith("/") ? configured.slice(0, -1) : configured,
+    );
   }
 
   return new URL("https://askillco.com");

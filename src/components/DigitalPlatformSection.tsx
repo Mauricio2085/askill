@@ -8,6 +8,7 @@ import {
   platformService,
   type PlatformModule,
 } from '@/content/services'
+import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 function ModuleContent({ module }: { module: PlatformModule }) {
@@ -123,6 +124,16 @@ export function DigitalPlatformSection() {
             <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
               {platformService.description}
             </p>
+            <div className="mt-6">
+              <a
+                href={sitePlatform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center rounded-md border border-askill-primary/40 bg-background px-6 text-sm font-semibold text-foreground transition-colors hover:border-askill-primary hover:text-askill-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2"
+              >
+                {sitePlatform.servicesCtaLabel}
+              </a>
+            </div>
             <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl border bg-card lg:mt-10">
               <Image
                 src={platformService.image}

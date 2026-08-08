@@ -4,12 +4,19 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { isNavItemActive, mainNavItems } from '@/content/navigation'
+import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 const legalNavItems = [
   { href: '/politica-privacidad', label: 'Política de privacidad' },
   { href: '/terminos-servicio', label: 'Términos de servicio' },
 ] as const
+
+const platformNavItem = {
+  href: sitePlatform.url,
+  label: sitePlatform.footerLabel,
+  external: true,
+} as const
 
 function footerNavLinkClassName(isActive: boolean) {
   return isActive
@@ -19,7 +26,7 @@ function footerNavLinkClassName(isActive: boolean) {
 
 export function SiteFooter() {
   const pathname = usePathname()
-  const footerNavItems = [...mainNavItems, ...legalNavItems]
+  const footerNavItems = [...mainNavItems, platformNavItem, ...legalNavItems]
 
   return (
     <footer className="border-t bg-background">
@@ -31,6 +38,23 @@ export function SiteFooter() {
           <nav aria-label="Navegación del pie de página">
             <ul className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
               {footerNavItems.map((item) => {
+                const isExternal = 'external' in item && item.external
+
+                if (isExternal) {
+                  return (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={footerNavLinkClassName(false)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  )
+                }
+
                 const isActive = isNavItemActive(pathname, item.href)
 
                 return (
