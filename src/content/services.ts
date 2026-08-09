@@ -15,16 +15,30 @@ import iiot from "@/assets/statics/iiot.webp";
 import sst from "@/assets/statics/sst.webp";
 import activos from "@/assets/statics/activos.webp";
 
+export type PlatformModuleDetail = {
+  problem: string;
+  solution: string;
+  impact: string;
+  impactBullets: string[];
+};
+
 export type PlatformModule = {
   id: string;
   label: string;
   title: string;
   subtitle: string;
+  /** `available` = producto vivo; `roadmap` = visión con copy diferencial. */
+  status: "available" | "roadmap";
   problem: string;
   solution: string;
   impact: string;
   impactBullets: string[];
   image: StaticImageData;
+  /**
+   * Copy completo del módulo cuando esté listo.
+   * Se conserva aquí para no perderlo mientras el tab muestra el framing de roadmap.
+   */
+  upcomingDetail?: PlatformModuleDetail;
 };
 
 export type EngineeringService = {
@@ -161,6 +175,7 @@ export const platformModules: PlatformModule[] = [
     label: "SST",
     title: "Gestión de Seguridad y Salud en el Trabajo",
     subtitle: "Permisos de alturas con evidencia digital",
+    status: "available",
     problem:
       "Permisos de alturas y ATS en papel o Excel, difíciles de firmar en campo, de recuperar en una auditoría y de cruzar con las vigencias del personal y contratistas.",
     solution:
@@ -179,36 +194,66 @@ export const platformModules: PlatformModule[] = [
     label: "Activos",
     title: "Gestión de Activos",
     subtitle: "Inventario, mantenimiento y trazabilidad",
+    status: "roadmap",
     problem:
-      "Activos críticos sin historial confiable, mantenimiento reactivo por fallas imprevistas, o falta de indicadores para priorizar intervenciones y repuestos.",
+      "Muchas plantas aún operan el mantenimiento con inventarios dispersos, historiales incompletos y poca visibilidad para priorizar intervenciones.",
     solution:
-      "Centralizamos inventario de activos, órdenes de trabajo, historial de intervenciones e indicadores de desempeño en la misma plataforma conectada a tu operación.",
+      "El módulo de Activos ampliará Askill Industrial Platform para centralizar inventario, órdenes de trabajo e indicadores de desempeño en la misma experiencia donde hoy opera SST.",
     impact:
-      "Mayor disponibilidad de equipos, planificación de mantenimiento basada en datos y visibilidad para líderes sobre criticidad, costos y cumplimiento de planes.",
+      "Una sola plataforma para seguridad operativa y gestión de activos, con menos herramientas aisladas y mejor trazabilidad para mantenimiento y proyectos.",
     impactBullets: [
-      "Inventario y criticidad: registro estructurado de activos con trazabilidad por equipo y ubicación.",
-      "Mantenimiento planificado: órdenes, checklists e historial de intervenciones en un solo lugar.",
-      "Métricas accionables: indicadores para reducir paros, reprocesos y tiempos de respuesta.",
+      "Incluirá inventario y criticidad de equipos con trazabilidad por ubicación.",
+      "Incluirá órdenes de trabajo, checklists e historial de intervenciones.",
+      "Incluirá indicadores para priorizar paros, costos y cumplimiento del plan de mantenimiento.",
     ],
     image: activos,
+    // Copy completo del producto (no se muestra mientras status === "roadmap").
+    upcomingDetail: {
+      problem:
+        "Activos críticos sin historial confiable, mantenimiento reactivo por fallas imprevistas, o falta de indicadores para priorizar intervenciones y repuestos.",
+      solution:
+        "Centralizamos inventario de activos, órdenes de trabajo, historial de intervenciones e indicadores de desempeño en la misma plataforma conectada a tu operación.",
+      impact:
+        "Mayor disponibilidad de equipos, planificación de mantenimiento basada en datos y visibilidad para líderes sobre criticidad, costos y cumplimiento de planes.",
+      impactBullets: [
+        "Inventario y criticidad: registro estructurado de activos con trazabilidad por equipo y ubicación.",
+        "Mantenimiento planificado: órdenes, checklists e historial de intervenciones en un solo lugar.",
+        "Métricas accionables: indicadores para reducir paros, reprocesos y tiempos de respuesta.",
+      ],
+    },
   },
   {
     id: "iiot",
     label: "IIoT",
     title: "Monitoreo Inteligente en Tiempo Real",
-    subtitle: "Industrial IoT bajo Modelo SaaS",
+    subtitle: "Industrial IoT en la nube",
+    status: "roadmap",
     problem:
-      "Desconocimiento de las causas reales de los paros de máquina hasta que el daño ya está hecho, dependencia de registros manuales en papel o imposibilidad de supervisar las variables si no se está frente al tablero físico.",
+      "Sin telemetría centralizada, las desviaciones se detectan tarde y la operación depende de estar frente al tablero o de registros manuales incompletos.",
     solution:
-      "Conectamos tus variables de piso de planta (PLC, sensores) directamente a nuestra plataforma web SaaS (Software as a Service) segura en la nube.",
+      "El módulo IIoT conectará variables de piso de planta (PLC y sensores) a Askill Industrial Platform para monitoreo, alertas e historial en la nube, complementando SST y Activos.",
     impact:
-      "Visibilidad continua de tu operación desde cualquier dispositivo, con datos centralizados para decisiones más rápidas y mantenimiento orientado a la eficiencia.",
+      "Visibilidad continua de la operación y una base de datos para mantenimiento más oportuno, dentro de la misma plataforma industrial.",
     impactBullets: [
-      "Dashboard Web: visualización del estado de tus máquinas en tiempo real desde PC, tablet o móvil.",
-      "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
-      "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
+      "Incluirá dashboard web del estado de máquinas desde PC, tablet o móvil.",
+      "Incluirá alertas tempranas ante desviaciones de variables críticas.",
+      "Incluirá historial para análisis de paros, eficiencia y soporte a mantenimiento predictivo.",
     ],
     image: iiot,
+    // Copy completo del producto (no se muestra mientras status === "roadmap").
+    upcomingDetail: {
+      problem:
+        "Desconocimiento de las causas reales de los paros de máquina hasta que el daño ya está hecho, dependencia de registros manuales en papel o imposibilidad de supervisar las variables si no se está frente al tablero físico.",
+      solution:
+        "Conectamos tus variables de piso de planta (PLC, sensores) directamente a nuestra plataforma web SaaS (Software as a Service) segura en la nube.",
+      impact:
+        "Visibilidad continua de tu operación desde cualquier dispositivo, con datos centralizados para decisiones más rápidas y mantenimiento orientado a la eficiencia.",
+      impactBullets: [
+        "Dashboard Web: visualización del estado de tus máquinas en tiempo real desde PC, tablet o móvil.",
+        "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
+        "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
+      ],
+    },
   },
 ];
 
@@ -217,7 +262,7 @@ export const platformService = {
   title: "Askill Industrial Platform",
   subtitle: "Software como servicio para operaciones industriales",
   description:
-    "Complementamos la ingeniería en planta con módulos SaaS para seguridad y salud en el trabajo, gestión de activos y monitoreo en tiempo real, integrados en una sola experiencia.",
+    "Hoy puedes operar el módulo de SST con evidencia digital. Gestión de activos y monitoreo IIoT estánarán próximamente en la misma plataforma.",
 };
 
 export const servicesTeaserContent = {

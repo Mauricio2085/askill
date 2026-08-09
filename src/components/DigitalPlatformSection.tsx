@@ -12,12 +12,21 @@ import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 function ModuleContent({ module }: { module: PlatformModule }) {
+  const isRoadmap = module.status === 'roadmap'
+
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
       <div>
-        <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          {module.title}
-        </h4>
+        <div className="flex flex-wrap items-center gap-2">
+          <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            {module.title}
+          </h4>
+          {isRoadmap ? (
+            <span className="rounded-md border border-askill-primary/30 bg-askill-primary/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-askill-primary">
+              Próximamente
+            </span>
+          ) : null}
+        </div>
         <p className="mt-2 text-sm font-medium text-askill-primary sm:text-base">
           {module.subtitle}
         </p>
@@ -25,7 +34,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
         <dl className="mt-6 space-y-5">
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              El problema en planta
+              {isRoadmap ? 'El reto en planta' : 'El problema en planta'}
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.problem}
@@ -33,7 +42,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Nuestra solución
+              {isRoadmap ? 'Nuestra visión' : 'Nuestra solución'}
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.solution}
@@ -41,7 +50,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              El impacto
+              {isRoadmap ? 'El valor esperado' : 'El impacto'}
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.impact}
@@ -156,6 +165,7 @@ export function DigitalPlatformSection() {
             >
               {platformModules.map((module) => {
                 const isActive = module.id === activeModuleId
+                const isRoadmap = module.status === 'roadmap'
 
                 return (
                   <button
@@ -167,13 +177,24 @@ export function DigitalPlatformSection() {
                     aria-controls={`panel-${module.id}`}
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => selectModule(module.id)}
-                    className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
+                    className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
                       isActive
                         ? 'bg-askill-primary text-askill-primary-foreground'
                         : 'bg-secondary text-secondary-foreground hover:bg-accent'
                     }`}
                   >
                     {module.label}
+                    {isRoadmap ? (
+                      <span
+                        className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                          isActive
+                            ? 'bg-askill-primary-foreground/15 text-askill-primary-foreground'
+                            : 'bg-askill-primary/10 text-askill-primary'
+                        }`}
+                      >
+                        Pronto
+                      </span>
+                    ) : null}
                   </button>
                 )
               })}
