@@ -48,6 +48,18 @@ const jobs = [
     width: 1400,
     quality: 78,
   },
+  {
+    input: "sst.png",
+    output: "sst.webp",
+    width: 1400,
+    quality: 78,
+  },
+  {
+    input: "activos.png",
+    output: "activos.webp",
+    width: 1400,
+    quality: 78,
+  },
 ];
 
 await mkdir(staticsDir, { recursive: true });
