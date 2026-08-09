@@ -136,10 +136,11 @@ export function DigitalPlatformSection() {
             </div>
             <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl border bg-card lg:mt-10">
               <Image
-                src={platformService.image}
-                alt={platformService.title}
+                key={activeModule.id}
+                src={activeModule.image}
+                alt={`${platformService.title} — ${activeModule.title}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-opacity duration-300"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
@@ -148,7 +149,7 @@ export function DigitalPlatformSection() {
           <div className="rounded-2xl border bg-card p-5 sm:p-6 lg:p-8">
             <div
               role="tablist"
-              aria-label="Módulos de la plataforma digital"
+              aria-label="Módulos de Askill Industrial Platform"
               aria-orientation="horizontal"
               className="flex flex-wrap gap-2"
               onKeyDown={handleTabListKeyDown}

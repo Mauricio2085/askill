@@ -12,6 +12,8 @@ import plc from "@/assets/statics/plc.webp";
 import retrofitting from "@/assets/statics/gabinete_control.webp";
 import software from "@/assets/statics/software.webp";
 import iiot from "@/assets/statics/iiot.webp";
+import sst from "@/assets/statics/sst.webp";
+import activos from "@/assets/statics/activos.webp";
 
 export type PlatformModule = {
   id: string;
@@ -22,6 +24,7 @@ export type PlatformModule = {
   solution: string;
   impact: string;
   impactBullets: string[];
+  image: StaticImageData;
 };
 
 export type EngineeringService = {
@@ -169,6 +172,7 @@ export const platformModules: PlatformModule[] = [
       "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
       "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
     ],
+    image: iiot,
   },
   {
     id: "sst",
@@ -178,7 +182,7 @@ export const platformModules: PlatformModule[] = [
     problem:
       "Permisos de trabajo en formatos físicos difíciles de rastrear, capacitaciones y competencias sin evidencia centralizada, o procesos de SST que no resisten una auditoría interna o de cliente.",
     solution:
-      "Digitalizamos permisos de trabajo, inspecciones, capacitaciones y evidencias en un flujo único dentro de la plataforma ASKILL, accesible desde terreno y oficina.",
+      "Digitalizamos permisos de trabajo, inspecciones, capacitaciones y evidencias en un flujo único dentro de Askill Industrial Platform, accesible desde terreno y oficina.",
     impact:
       "Menor exposición al riesgo operativo, trazabilidad completa por actividad y respuesta más ágil ante auditorías de seguridad y cumplimiento normativo.",
     impactBullets: [
@@ -186,6 +190,7 @@ export const platformModules: PlatformModule[] = [
       "Evidencias en terreno: fotos, firmas y registros asociados a cada actividad crítica.",
       "Control por roles: acceso diferenciado para operación, contratistas, supervisión y HSE.",
     ],
+    image: sst,
   },
   {
     id: "activos",
@@ -203,16 +208,16 @@ export const platformModules: PlatformModule[] = [
       "Mantenimiento planificado: órdenes, checklists e historial de intervenciones en un solo lugar.",
       "Métricas accionables: indicadores para reducir paros, reprocesos y tiempos de respuesta.",
     ],
+    image: activos,
   },
 ];
 
 export const platformService = {
   id: "plataforma-digital",
-  title: "Plataforma Digital ASKILL",
+  title: "Askill Industrial Platform",
   subtitle: "Software como servicio para operaciones industriales",
   description:
     "Complementamos la ingeniería en planta con módulos SaaS para monitoreo, seguridad y gestión de activos, integrados en una sola experiencia.",
-  image: iiot,
 };
 
 export const servicesTeaserContent = {
