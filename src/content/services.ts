@@ -157,38 +157,20 @@ export const engineeringServices: EngineeringService[] = [
 
 export const platformModules: PlatformModule[] = [
   {
-    id: "iiot",
-    label: "IIoT",
-    title: "Monitoreo Inteligente en Tiempo Real",
-    subtitle: "Industrial IoT bajo Modelo SaaS",
-    problem:
-      "Desconocimiento de las causas reales de los paros de máquina hasta que el daño ya está hecho, dependencia de registros manuales en papel o imposibilidad de supervisar las variables si no se está frente al tablero físico.",
-    solution:
-      "Conectamos tus variables de piso de planta (PLC, sensores) directamente a nuestra plataforma web SaaS (Software as a Service) segura en la nube.",
-    impact:
-      "Visibilidad continua de tu operación desde cualquier dispositivo, con datos centralizados para decisiones más rápidas y mantenimiento orientado a la eficiencia.",
-    impactBullets: [
-      "Dashboard Web: visualización del estado de tus máquinas en tiempo real desde PC, tablet o móvil.",
-      "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
-      "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
-    ],
-    image: iiot,
-  },
-  {
     id: "sst",
     label: "SST",
     title: "Gestión de Seguridad y Salud en el Trabajo",
-    subtitle: "Cumplimiento operativo digital",
+    subtitle: "Permisos de alturas con evidencia digital",
     problem:
-      "Permisos de trabajo en formatos físicos difíciles de rastrear, capacitaciones y competencias sin evidencia centralizada, o procesos de SST que no resisten una auditoría interna o de cliente.",
+      "Permisos de alturas y ATS en papel o Excel, difíciles de firmar en campo, de recuperar en una auditoría y de cruzar con las vigencias del personal y contratistas.",
     solution:
-      "Digitalizamos permisos de trabajo, inspecciones, capacitaciones y evidencias en un flujo único dentro de Askill Industrial Platform, accesible desde terreno y oficina.",
+      "En Askill Industrial Platform digitalizamos permisos de trabajo en alturas y Análisis de Tarea Segura (ATS): firmas digitales remotas o en kiosco, documento con integridad protegida, descarga en PDF, y control de personal, terceros y catálogos operativos.",
     impact:
-      "Menor exposición al riesgo operativo, trazabilidad completa por actividad y respuesta más ágil ante auditorías de seguridad y cumplimiento normativo.",
+      "Operación más ágil en campo, evidencia firmada lista para auditoría y mejor control de quién puede ejecutar trabajos de alto riesgo.",
     impactBullets: [
-      "Permisos de trabajo: flujos de aprobación con responsables, requisitos y validaciones antes de ejecutar.",
-      "Evidencias en terreno: fotos, firmas y registros asociados a cada actividad crítica.",
-      "Control por roles: acceso diferenciado para operación, contratistas, supervisión y HSE.",
+      "Permisos y ATS: flujo digital con estados claros, vinculación entre análisis y permiso, más cierre o vencimiento automático del ciclo.",
+      "Firmas y documentos: firma desde el celular o en kiosco, integridad del documento protegida y descarga en PDF para archivo o auditoría.",
+      "Personal y terceros: aptitud y vigencias (certificaciones, exámenes, SSO), más catálogos de tareas críticas, EPP y planes de rescate.",
     ],
     image: sst,
   },
@@ -210,6 +192,24 @@ export const platformModules: PlatformModule[] = [
     ],
     image: activos,
   },
+  {
+    id: "iiot",
+    label: "IIoT",
+    title: "Monitoreo Inteligente en Tiempo Real",
+    subtitle: "Industrial IoT bajo Modelo SaaS",
+    problem:
+      "Desconocimiento de las causas reales de los paros de máquina hasta que el daño ya está hecho, dependencia de registros manuales en papel o imposibilidad de supervisar las variables si no se está frente al tablero físico.",
+    solution:
+      "Conectamos tus variables de piso de planta (PLC, sensores) directamente a nuestra plataforma web SaaS (Software as a Service) segura en la nube.",
+    impact:
+      "Visibilidad continua de tu operación desde cualquier dispositivo, con datos centralizados para decisiones más rápidas y mantenimiento orientado a la eficiencia.",
+    impactBullets: [
+      "Dashboard Web: visualización del estado de tus máquinas en tiempo real desde PC, tablet o móvil.",
+      "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
+      "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
+    ],
+    image: iiot,
+  },
 ];
 
 export const platformService = {
@@ -217,7 +217,7 @@ export const platformService = {
   title: "Askill Industrial Platform",
   subtitle: "Software como servicio para operaciones industriales",
   description:
-    "Complementamos la ingeniería en planta con módulos SaaS para monitoreo, seguridad y gestión de activos, integrados en una sola experiencia.",
+    "Complementamos la ingeniería en planta con módulos SaaS para seguridad y salud en el trabajo, gestión de activos y monitoreo en tiempo real, integrados en una sola experiencia.",
 };
 
 export const servicesTeaserContent = {
