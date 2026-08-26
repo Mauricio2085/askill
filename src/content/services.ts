@@ -262,7 +262,7 @@ export const platformService = {
   title: "Askill Industrial Platform",
   subtitle: "Software como servicio para operaciones industriales",
   description:
-    "Hoy puedes operar el módulo de SST con evidencia digital. Gestión de activos y monitoreo IIoT estánarán próximamente en la misma plataforma.",
+    "Hoy puedes operar el módulo de SST con evidencia digital. Gestión de activos y monitoreo IIoT estarán próximamente en la misma plataforma.",
 };
 
 export const servicesTeaserContent = {
