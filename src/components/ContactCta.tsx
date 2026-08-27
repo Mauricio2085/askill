@@ -14,7 +14,7 @@ export function ContactCta({
   eyebrow,
   title,
   description,
-  buttonLabel = 'Contáctanos',
+  buttonLabel = 'Agenda una visita técnica',
   secondaryLink,
 }: ContactCtaProps) {
   return (

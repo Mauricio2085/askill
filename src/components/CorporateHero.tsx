@@ -25,16 +25,16 @@ export function CorporateHero() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="/servicios"
+              href="/contacto"
               className="inline-flex h-11 w-full items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 sm:w-auto"
             >
-              Ver servicios
+              Agenda una visita técnica
             </Link>
             <Link
-              href="/sobre-nosotros"
+              href="/servicios"
               className="inline-flex h-11 w-full items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto"
             >
-              Sobre nosotros
+              Ver servicios
             </Link>
           </div>
 

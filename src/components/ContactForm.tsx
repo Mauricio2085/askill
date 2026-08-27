@@ -3,7 +3,12 @@
 import Link from 'next/link'
 import { useState, type FormEvent } from 'react'
 
-import { contactContent } from '@/content/contact'
+import {
+  contactContent,
+  contactNeedOptions,
+  contactPreferenceOptions,
+  contactUrgencyOptions,
+} from '@/content/contact'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -13,8 +18,18 @@ const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
 const inputClassName =
   'h-11 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60'
 
+const selectClassName = `${inputClassName} appearance-none`
+
 const textareaClassName =
   'w-full resize-y rounded-md border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60'
+
+function optionLabel(
+  options: readonly { value: string; label: string }[],
+  value: FormDataEntryValue | null,
+) {
+  if (typeof value !== 'string' || !value) return 'No indicado'
+  return options.find((option) => option.value === value)?.label ?? value
+}
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -40,6 +55,9 @@ export function ContactForm() {
     setFeedbackMessage('')
 
     const formData = new FormData(form)
+    const needValue = formData.get('need')
+    const urgencyValue = formData.get('urgency')
+    const preferenceValue = formData.get('preference')
 
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -50,12 +68,22 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: 'Nuevo contacto — ASKILL S.A.S',
+          subject: 'Solicitud de visita técnica — ASKILL S.A.S',
           from_name: 'ASKILL Web',
           name: formData.get('name'),
           company: formData.get('company'),
           email: formData.get('email'),
           phone: formData.get('phone'),
+          plant_city: formData.get('plant_city'),
+          need: needValue,
+          need_label: optionLabel(contactNeedOptions, needValue),
+          urgency: urgencyValue,
+          urgency_label: optionLabel(contactUrgencyOptions, urgencyValue),
+          preference: preferenceValue,
+          preference_label: optionLabel(
+            contactPreferenceOptions,
+            preferenceValue,
+          ),
           message: formData.get('message'),
           privacy_consent: formData.get('privacy') === 'on',
           botcheck: formData.get('botcheck'),
@@ -87,7 +115,7 @@ export function ContactForm() {
   return (
     <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-foreground sm:text-xl">
-        Escríbenos
+        {contactContent.form.title}
       </h2>
       <p className="mt-2 text-sm text-muted-foreground">
         {contactContent.form.helperText}
@@ -95,7 +123,7 @@ export function ContactForm() {
 
       <form
         className="mt-8 space-y-5"
-        aria-label="Formulario de contacto"
+        aria-label="Formulario de solicitud de visita técnica"
         onSubmit={handleSubmit}
       >
         <input
@@ -169,6 +197,88 @@ export function ContactForm() {
 
         <label className="block text-left">
           <span className="mb-2 block text-sm font-medium text-foreground">
+            {contactContent.form.plantCityLabel}
+          </span>
+          <input
+            type="text"
+            name="plant_city"
+            autoComplete="address-level2"
+            required
+            disabled={isSubmitting}
+            className={inputClassName}
+            placeholder={contactContent.form.plantCityPlaceholder}
+          />
+        </label>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="block text-left">
+            <span className="mb-2 block text-sm font-medium text-foreground">
+              {contactContent.form.needLabel}
+            </span>
+            <select
+              name="need"
+              required
+              disabled={isSubmitting}
+              defaultValue=""
+              className={selectClassName}
+            >
+              <option value="" disabled>
+                {contactContent.form.needPlaceholder}
+              </option>
+              {contactNeedOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-left">
+            <span className="mb-2 block text-sm font-medium text-foreground">
+              {contactContent.form.urgencyLabel}
+            </span>
+            <select
+              name="urgency"
+              required
+              disabled={isSubmitting}
+              defaultValue=""
+              className={selectClassName}
+            >
+              <option value="" disabled>
+                {contactContent.form.urgencyPlaceholder}
+              </option>
+              {contactUrgencyOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <label className="block text-left">
+          <span className="mb-2 block text-sm font-medium text-foreground">
+            {contactContent.form.preferenceLabel}
+          </span>
+          <select
+            name="preference"
+            required
+            disabled={isSubmitting}
+            defaultValue="visita"
+            className={selectClassName}
+          >
+            <option value="" disabled>
+              {contactContent.form.preferencePlaceholder}
+            </option>
+            {contactPreferenceOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block text-left">
+          <span className="mb-2 block text-sm font-medium text-foreground">
             {contactContent.form.messageLabel}
           </span>
           <textarea
@@ -177,7 +287,7 @@ export function ContactForm() {
             required
             disabled={isSubmitting}
             className={textareaClassName}
-            placeholder="Cuéntanos sobre tu proyecto o necesidad operativa"
+            placeholder={contactContent.form.messagePlaceholder}
           />
         </label>
 

@@ -13,6 +13,14 @@ export function ContactPageContent() {
           <p className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             {contactContent.intro}
           </p>
+          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-askill-primary/30 bg-askill-primary/5 px-5 py-4 text-left sm:px-6 sm:py-5">
+            <p className="text-sm font-semibold text-askill-primary sm:text-base">
+              {contactContent.visitOffer.title}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {contactContent.visitOffer.description}
+            </p>
+          </div>
         </div>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:mt-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-12">
