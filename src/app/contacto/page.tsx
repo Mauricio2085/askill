@@ -5,13 +5,13 @@ import { Header } from '@/components/Header'
 import { SiteFooter } from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
-  title: 'Contacto',
+  title: 'Agenda una visita técnica',
   description:
-    'Contáctanos para automatización industrial, control de procesos e Industria 4.0. ASKILL S.A.S — Pereira, Colombia.',
+    'Solicita una visita técnica a tu planta. Diagnóstico en sitio, levantamiento y propuesta de ingeniería sin compromiso. ASKILL S.A.S — Pereira, Colombia.',
   openGraph: {
-    title: 'Contacto | ASKILL S.A.S',
+    title: 'Agenda una visita técnica | ASKILL S.A.S',
     description:
-      'Contáctanos para automatización industrial, control de procesos e Industria 4.0 en Pereira, Colombia.',
+      'Visitas técnicas ilimitadas en fase de oferta y diseño. Diagnóstico en planta y propuesta clara para tu operación.',
     url: '/contacto',
   },
   alternates: {

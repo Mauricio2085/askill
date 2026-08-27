@@ -50,7 +50,7 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: 'Nuevo contacto — ASKILL S.A.S',
+          subject: 'Solicitud de visita técnica — ASKILL S.A.S',
           from_name: 'ASKILL Web',
           name: formData.get('name'),
           company: formData.get('company'),

@@ -8,9 +8,14 @@ export type ContactCtaContent = {
 };
 
 export const contactContent = {
-  title: "Contacto",
+  title: "Agenda una visita técnica",
   intro:
-    "Cuéntanos sobre tu planta, tu reto operativo o el proyecto que quieres impulsar. Nuestro equipo de ingeniería te responderá para evaluar la mejor solución.",
+    "En la fase de oferta y diseño, visitamos tu planta sin límite de veces para entender el reto en sitio. Cuéntanos tu contexto y coordinamos el diagnóstico con ingeniería.",
+  visitOffer: {
+    title: "Qué incluye la visita",
+    description:
+      "Recorrido por planta, levantamiento de necesidades, hallazgos iniciales y una propuesta alineada a tu operación — sin compromiso de compra.",
+  },
   form: {
     nameLabel: "Nombre completo",
     companyLabel: "Empresa",
@@ -20,12 +25,12 @@ export const contactContent = {
     privacyLabel:
       "Autorizo el tratamiento de mis datos personales de acuerdo con la",
     privacyLinkLabel: "Política de privacidad",
-    submitLabel: "Enviar mensaje",
+    submitLabel: "Solicitar visita técnica",
     submittingLabel: "Enviando...",
     helperText:
-      "Completa el formulario y nuestro equipo te contactará desde ingeniería.",
+      "Indica planta, ciudad y el reto principal. Coordinamos la visita desde ingeniería.",
     successMessage:
-      "¡Gracias! Recibimos tu mensaje y te responderemos pronto.",
+      "¡Gracias! Recibimos tu solicitud y te contactaremos para agendar la visita técnica.",
     errorMessage:
       "No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo.",
   },
@@ -36,30 +41,30 @@ export const contactContent = {
     location: "Pereira, Risaralda — Colombia",
     hours: "Lunes a viernes, 8:00 a.m. – 5:00 p.m.",
     responseNote:
-      "Respondemos solicitudes de lunes a viernes en horario laboral. Si tu necesidad es urgente, indícalo en el mensaje.",
+      "Respondemos de lunes a viernes en horario laboral. Si necesitas una visita urgente por paro o falla crítica, indícalo en el mensaje.",
   },
 } as const;
 
 export const contactCtaByPage = {
   home: {
-    eyebrow: "Tu proyecto, nuestro expertise",
-    title: "¿Listo para llevar tu planta al siguiente nivel?",
+    eyebrow: "Visita técnica en planta",
+    title: "¿Listo para que un ingeniero vea tu operación en sitio?",
     description:
-      "Automatización, control industrial e Industria 4.0 con ingeniería en piso de planta. Escríbenos y diseñemos juntos la solución que tu operación necesita.",
-    buttonLabel: "Contáctanos",
+      "En oferta y diseño, las visitas técnicas son ilimitadas: recorrido, levantamiento y propuesta clara. Agenda el diagnóstico sin compromiso.",
+    buttonLabel: "Agenda una visita técnica",
   },
   about: {
-    eyebrow: "Trabajemos juntos",
-    title: "¿Buscas un aliado en mantenimiento y proyectos?",
+    eyebrow: "De la conversación a la planta",
+    title: "¿Buscas un aliado que baje a piso de planta?",
     description:
-      "Combinamos planificación rigurosa, ejecución impecable y resultados sostenibles. Cuéntanos tu reto y te proponemos el camino técnico más claro.",
-    buttonLabel: "Contáctanos",
+      "Una planificación rigurosa empieza con entender tu realidad en sitio. Solicita una visita técnica y te proponemos el camino más claro.",
+    buttonLabel: "Agenda una visita técnica",
   },
   services: {
-    eyebrow: "Hablemos de tu operación",
+    eyebrow: "Diagnóstico en sitio",
     title: "¿Cuál de estos retos tiene tu planta hoy?",
     description:
-      "Cuéntanos tu contexto y te proponemos el servicio de ingeniería o el módulo digital más adecuado para tu operación.",
-    buttonLabel: "Contáctanos",
+      "Elige el servicio que más se acerque a tu necesidad y agenda una visita técnica: levantamos el caso en planta y te devolvemos una propuesta concreta.",
+    buttonLabel: "Agenda una visita técnica",
   },
 } satisfies Record<string, ContactCtaContent>;
