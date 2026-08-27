@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
+import { WhatsAppContactLink } from '@/components/WhatsAppContact'
 import type { ContactCtaContent } from '@/content/contact'
+import { contactContent } from '@/content/contact'
 import { siteContainerClassName } from '@/lib/site-container'
 
 type ContactCtaProps = ContactCtaContent & {
@@ -8,6 +10,7 @@ type ContactCtaProps = ContactCtaContent & {
     href: string
     label: string
   }
+  showWhatsApp?: boolean
 }
 
 export function ContactCta({
@@ -16,6 +19,7 @@ export function ContactCta({
   description,
   buttonLabel = 'Agenda una visita técnica',
   secondaryLink,
+  showWhatsApp = true,
 }: ContactCtaProps) {
   return (
     <section className="border-t border-border bg-secondary/20">
@@ -38,7 +42,9 @@ export function ContactCta({
           >
             {buttonLabel}
           </Link>
-          {secondaryLink ? (
+          {showWhatsApp ? (
+            <WhatsAppContactLink variant="outline" />
+          ) : secondaryLink ? (
             <Link
               href={secondaryLink.href}
               className="inline-flex h-11 w-full items-center justify-center rounded-md border bg-background px-6 text-sm font-semibold hover:bg-accent sm:w-auto"
@@ -47,6 +53,11 @@ export function ContactCta({
             </Link>
           ) : null}
         </div>
+        {showWhatsApp ? (
+          <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">
+            {contactContent.whatsapp.helperText}
+          </p>
+        ) : null}
       </div>
     </section>
   )

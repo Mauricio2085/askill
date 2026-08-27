@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 
 import { OrganizationJsonLd } from '@/components/OrganizationJsonLd'
 import { SkipToContentLink } from '@/components/SkipToContentLink'
+import { WhatsAppFloatingButton } from '@/components/WhatsAppContact'
 import {
   defaultSiteDescription,
   getSiteUrl,
@@ -56,6 +57,7 @@ export default function RootLayout({
         <SkipToContentLink />
         <OrganizationJsonLd />
         {children}
+        <WhatsAppFloatingButton />
         <Analytics />
       </body>
     </html>

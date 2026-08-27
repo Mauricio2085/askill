@@ -12,10 +12,22 @@ export const siteContact = {
   email: "contacto@askillco.com",
   telephone: "+57-310-678-9371",
   telephoneDisplay: "+57 310 678 9371",
+  /** E.164 digits only for wa.me links (country code + number, no +). */
+  whatsappE164: "573106789371",
   locality: "Pereira",
   region: "Risaralda",
   country: "CO",
 } as const;
+
+export function getWhatsAppUrl(prefilledMessage?: string) {
+  const url = new URL(`https://wa.me/${siteContact.whatsappE164}`);
+
+  if (prefilledMessage?.trim()) {
+    url.searchParams.set("text", prefilledMessage.trim());
+  }
+
+  return url.toString();
+}
 
 /** SaaS app URL for returning customers. */
 export const sitePlatform = {
