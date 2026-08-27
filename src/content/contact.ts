@@ -80,7 +80,16 @@ export const contactContent = {
     location: "Pereira, Risaralda — Colombia",
     hours: "Lunes a viernes, 8:00 a.m. – 5:00 p.m.",
     responseNote:
-      "Respondemos de lunes a viernes en horario laboral. Si necesitas una visita urgente por paro o falla crítica, indícalo en el mensaje.",
+      "Respondemos de lunes a viernes en horario laboral. Si hay paro o falla crítica, escríbenos por WhatsApp e indícalo como urgente.",
+  },
+  whatsapp: {
+    label: "Escribir por WhatsApp",
+    floatingLabel: "WhatsApp",
+    ariaLabel: "Abrir chat de WhatsApp con ASKILL",
+    helperText:
+      "Canal rápido para urgencias operativas. Respondemos en horario laboral.",
+    prefilledMessage:
+      "Hola ASKILL, quiero consultar un reto en planta / agendar una visita técnica.",
   },
 } as const;
 

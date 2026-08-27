@@ -1,4 +1,5 @@
 import { ContactForm } from '@/components/ContactForm'
+import { WhatsAppContactLink } from '@/components/WhatsAppContact'
 import { contactContent } from '@/content/contact'
 import { siteContainerClassName } from '@/lib/site-container'
 
@@ -67,6 +68,13 @@ export function ContactPageContent() {
                   </dd>
                 </div>
               </dl>
+
+              <div className="mt-8 space-y-3">
+                <WhatsAppContactLink className="w-full sm:w-full" />
+                <p className="text-sm text-muted-foreground">
+                  {contactContent.whatsapp.helperText}
+                </p>
+              </div>
             </div>
 
             <div className="rounded-2xl border border-dashed border-askill-primary/40 bg-askill-primary/5 p-6 sm:p-8">
