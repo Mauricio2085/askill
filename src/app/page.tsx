@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+import { CaseStudiesSection } from '@/components/CaseStudiesSection'
 import { ClientsSection } from '@/components/ClientsSection'
 import { ContactCta } from '@/components/ContactCta'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -43,6 +44,7 @@ export default function Home() {
         <CorporateHero />
         <ServicesTeaser />
         <ClientsSection />
+        <CaseStudiesSection />
 
         <section className="border-t border-border bg-background">
           <div className={`${siteContainerClassName} py-14 text-center sm:py-16`}>
