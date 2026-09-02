@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { WhatsAppContactLink } from '@/components/WhatsAppContact'
 import type { ContactCtaContent } from '@/content/contact'
-import { contactContent } from '@/content/contact'
+import { contactContent, type ContactIntent } from '@/content/contact'
 import { siteContainerClassName } from '@/lib/site-container'
 
 type ContactCtaProps = ContactCtaContent & {
@@ -11,6 +11,7 @@ type ContactCtaProps = ContactCtaContent & {
     label: string
   }
   showWhatsApp?: boolean
+  whatsappIntent?: ContactIntent
 }
 
 export function ContactCta({
@@ -18,9 +19,16 @@ export function ContactCta({
   title,
   description,
   buttonLabel = 'Agenda una visita técnica',
+  href = '/contacto',
   secondaryLink,
   showWhatsApp = true,
+  whatsappIntent = 'engineering',
 }: ContactCtaProps) {
+  const whatsappHelperText =
+    whatsappIntent === 'platform'
+      ? contactContent.whatsapp.platformHelperText
+      : contactContent.whatsapp.helperText
+
   return (
     <section className="border-t border-border bg-secondary/20">
       <div className={`${siteContainerClassName} py-14 text-center sm:py-16 lg:py-20`}>
@@ -37,13 +45,16 @@ export function ContactCta({
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
-            href="/contacto"
+            href={href}
             className="inline-flex h-11 w-full items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 sm:w-auto"
           >
             {buttonLabel}
           </Link>
           {showWhatsApp ? (
-            <WhatsAppContactLink variant="outline" />
+            <WhatsAppContactLink
+              variant="outline"
+              intent={whatsappIntent}
+            />
           ) : secondaryLink ? (
             <Link
               href={secondaryLink.href}
@@ -55,7 +66,7 @@ export function ContactCta({
         </div>
         {showWhatsApp ? (
           <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">
-            {contactContent.whatsapp.helperText}
+            {whatsappHelperText}
           </p>
         ) : null}
       </div>

@@ -265,6 +265,22 @@ export const platformService = {
     "Hoy puedes operar el módulo de SST con evidencia digital. Gestión de activos y monitoreo IIoT estarán próximamente en la misma plataforma.",
 };
 
+/** Copy de producto para marketing; en roadmap usa `upcomingDetail` si existe. */
+export function getPlatformModuleDetail(
+  module: PlatformModule,
+): PlatformModuleDetail {
+  if (module.status === "roadmap" && module.upcomingDetail) {
+    return module.upcomingDetail;
+  }
+
+  return {
+    problem: module.problem,
+    solution: module.solution,
+    impact: module.impact,
+    impactBullets: module.impactBullets,
+  };
+}
+
 export const servicesTeaserContent = {
   eyebrow: "Ingeniería + Industria 4.0",
   title: "Nuestros servicios",

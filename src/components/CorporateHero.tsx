@@ -31,10 +31,10 @@ export function CorporateHero() {
               Agenda una visita técnica
             </Link>
             <Link
-              href="/servicios"
+              href="/plataforma"
               className="inline-flex h-11 w-full items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto"
             >
-              Ver servicios
+              Ver la plataforma
             </Link>
           </div>
 

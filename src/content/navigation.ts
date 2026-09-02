@@ -5,6 +5,7 @@ export type MainNavItem = {
 
 export const mainNavItems = [
   { href: '/servicios', label: 'Servicios' },
+  { href: '/plataforma', label: 'Plataforma' },
   { href: '/sobre-nosotros', label: 'Sobre nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ] satisfies MainNavItem[]

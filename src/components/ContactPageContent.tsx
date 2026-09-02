@@ -1,31 +1,56 @@
 import { ContactForm } from '@/components/ContactForm'
 import { WhatsAppContactLink } from '@/components/WhatsAppContact'
-import { contactContent } from '@/content/contact'
+import {
+  contactContent,
+  type ContactIntent,
+} from '@/content/contact'
 import { siteContainerClassName } from '@/lib/site-container'
 
-export function ContactPageContent() {
+type ContactPageContentProps = {
+  intent?: ContactIntent
+  defaultNeed?: string
+}
+
+export function ContactPageContent({
+  intent = 'engineering',
+  defaultNeed,
+}: ContactPageContentProps) {
+  const isPlatform = intent === 'platform'
+  const title = isPlatform
+    ? contactContent.platformPage.title
+    : contactContent.title
+  const intro = isPlatform
+    ? contactContent.platformPage.intro
+    : contactContent.intro
+  const offer = isPlatform
+    ? contactContent.platformPage.offer
+    : contactContent.visitOffer
+  const whatsappHelper = isPlatform
+    ? contactContent.whatsapp.platformHelperText
+    : contactContent.whatsapp.helperText
+
   return (
     <section className="bg-background">
       <div className={`${siteContainerClassName} py-16 sm:py-20 lg:py-24`}>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            {contactContent.title}
+            {title}
           </h1>
           <p className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {contactContent.intro}
+            {intro}
           </p>
           <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-askill-primary/30 bg-askill-primary/5 px-5 py-4 text-left sm:px-6 sm:py-5">
             <p className="text-sm font-semibold text-askill-primary sm:text-base">
-              {contactContent.visitOffer.title}
+              {offer.title}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {contactContent.visitOffer.description}
+              {offer.description}
             </p>
           </div>
         </div>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:mt-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-12">
-          <ContactForm />
+          <ContactForm intent={intent} defaultNeed={defaultNeed} />
 
           <aside className="flex flex-col gap-6">
             <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
@@ -70,10 +95,8 @@ export function ContactPageContent() {
               </dl>
 
               <div className="mt-8 space-y-3">
-                <WhatsAppContactLink className="w-full sm:w-full" />
-                <p className="text-sm text-muted-foreground">
-                  {contactContent.whatsapp.helperText}
-                </p>
+                <WhatsAppContactLink className="w-full sm:w-full" intent={intent} />
+                <p className="text-sm text-muted-foreground">{whatsappHelper}</p>
               </div>
             </div>
 

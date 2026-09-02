@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState, type KeyboardEvent } from 'react'
 
 import {
@@ -133,7 +134,13 @@ export function DigitalPlatformSection() {
             <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
               {platformService.description}
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/plataforma"
+                className="inline-flex h-11 items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2"
+              >
+                Conocer la plataforma
+              </Link>
               <a
                 href={sitePlatform.url}
                 target="_blank"

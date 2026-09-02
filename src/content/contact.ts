@@ -1,10 +1,13 @@
 import { siteContact } from "@/lib/site";
 
+export type ContactIntent = "engineering" | "platform";
+
 export type ContactCtaContent = {
   eyebrow?: string;
   title: string;
   description: string;
   buttonLabel?: string;
+  href?: string;
 };
 
 export type ContactFormOption = {
@@ -19,15 +22,53 @@ export const contactNeedOptions = [
   { value: "instrumentacion", label: "Sensores e instrumentación" },
   { value: "retrofitting", label: "Retrofitting / modernización" },
   { value: "desarrollo-software", label: "Software a la medida" },
-  { value: "sst", label: "Plataforma SST (permisos / ATS)" },
+  {
+    value: "plataforma",
+    label: "Askill Industrial Platform (SST / Activos / IIoT)",
+  },
   { value: "otro", label: "Otro / aún no lo tengo claro" },
 ] as const satisfies readonly ContactFormOption[];
 
 export const contactUrgencyOptions = [
   { value: "paro", label: "Paro o falla crítica" },
+  { value: "demo", label: "Demo / prueba de plataforma" },
   { value: "proyecto", label: "Proyecto planificado" },
   { value: "mejora", label: "Mejora / optimización" },
 ] as const satisfies readonly ContactFormOption[];
+
+export function isPlatformNeed(need: string | null | undefined): boolean {
+  return need === "plataforma" || need === "sst";
+}
+
+function firstSearchParam(
+  value: string | string[] | undefined,
+): string | undefined {
+  if (Array.isArray(value)) return value[0];
+  return value;
+}
+
+export function getContactIntent(params: {
+  need?: string | string[];
+  origen?: string | string[];
+}): ContactIntent {
+  const need = firstSearchParam(params.need);
+  const origen = firstSearchParam(params.origen);
+
+  if (origen === "plataforma" || isPlatformNeed(need)) return "platform";
+  return "engineering";
+}
+
+export function resolveContactNeedValue(
+  need: string | undefined,
+  intent: ContactIntent,
+): string {
+  if (isPlatformNeed(need)) return "plataforma";
+  if (need && contactNeedOptions.some((option) => option.value === need)) {
+    return need;
+  }
+  if (intent === "platform") return "plataforma";
+  return "";
+}
 
 export const contactPreferenceOptions = [
   { value: "visita", label: "Visita técnica en planta" },
@@ -72,6 +113,7 @@ export const contactContent = {
       "¡Gracias! Recibimos tu solicitud y te contactaremos para agendar la visita técnica.",
     errorMessage:
       "No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo.",
+    subject: "Solicitud de visita técnica — ASKILL S.A.S",
   },
   info: {
     title: "Datos de contacto",
@@ -90,6 +132,34 @@ export const contactContent = {
       "Canal rápido para urgencias operativas. Respondemos en horario laboral.",
     prefilledMessage:
       "Hola ASKILL, quiero consultar un reto en planta / agendar una visita técnica.",
+    platformLabel: "Pedir demo por WhatsApp",
+    platformAriaLabel: "Abrir WhatsApp para pedir una demo de la plataforma",
+    platformHelperText:
+      "Canal rápido para pedir una demo o un acceso de prueba. Respondemos en horario laboral.",
+    platformPrefilledMessage:
+      "Hola ASKILL, quiero una demo de Askill Industrial Platform (SST / Activos / IIoT).",
+  },
+  platformPage: {
+    title: "Demo de Askill Industrial Platform",
+    intro:
+      "Sin visita técnica. Te mostramos el módulo SST —disponible hoy— y cómo Activos e IIoT operan en la misma plataforma.",
+    offer: {
+      title: "Qué incluye la demo",
+      description:
+        "Recorrido por el producto, alcance del MVP y cómo activar una prueba para tu operación — sin compromiso de compra.",
+    },
+  },
+  platformForm: {
+    title: "Pide una demo",
+    helperText:
+      "Con estos datos te contactamos para activar una prueba. No hace falta visita técnica.",
+    submitLabel: "Pedir demo",
+    successMessage:
+      "¡Gracias! Recibimos tu solicitud y te contactaremos para coordinar la demo o el acceso de prueba.",
+    messageLabel: "Qué quieres ver",
+    messagePlaceholder:
+      "Cuéntanos si te interesa SST, Activos, IIoT o la plataforma completa. Número aproximado de trabajadores o plantas ayuda a preparar la demo.",
+    subject: "Solicitud de demo — Askill Industrial Platform",
   },
 } as const;
 
@@ -114,5 +184,13 @@ export const contactCtaByPage = {
     description:
       "Elige el servicio que más se acerque a tu necesidad y agenda una visita técnica: levantamos el caso en planta y te devolvemos una propuesta concreta.",
     buttonLabel: "Agenda una visita técnica",
+  },
+  platform: {
+    eyebrow: "Sin visita técnica",
+    title: "¿Quieres ver Askill Industrial Platform en tu operación?",
+    description:
+      "Pide una demo o un acceso de prueba. SST está disponible hoy; Activos e IIoT se habilitan en la misma plataforma.",
+    buttonLabel: "Pedir demo",
+    href: "/contacto?origen=plataforma",
   },
 } satisfies Record<string, ContactCtaContent>;
