@@ -81,16 +81,9 @@ export function PlatformPageContent() {
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-askill-primary">
-                        {module.label}
-                      </p>
-                      {module.status === "available" ? (
-                        <span className="rounded-md bg-askill-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-askill-primary">
-                          {platformPageContent.availableLabel}
-                        </span>
-                      ) : null}
-                    </div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-askill-primary">
+                      {module.label}
+                    </p>
                     <h3 className="mt-2 text-lg font-semibold leading-snug tracking-tight">
                       {module.title}
                     </h3>

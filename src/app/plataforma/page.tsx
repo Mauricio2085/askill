@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Askill Industrial Platform | ASKILL S.A.S",
     description:
-      "SST, activos e IIoT en una sola plataforma. SST disponible hoy; pide una demo o un acceso de prueba.",
+      "SST, activos e IIoT en una sola plataforma. Pide una demo o un acceso de prueba.",
     url: "/plataforma",
   },
   twitter: {
     title: "Askill Industrial Platform | ASKILL S.A.S",
     description:
-      "SST, activos e IIoT en una sola plataforma. SST disponible hoy; pide una demo o un acceso de prueba.",
+      "SST, activos e IIoT en una sola plataforma. Pide una demo o un acceso de prueba.",
   },
   alternates: {
     canonical: "/plataforma",

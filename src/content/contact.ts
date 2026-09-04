@@ -142,7 +142,7 @@ export const contactContent = {
   platformPage: {
     title: "Demo de Askill Industrial Platform",
     intro:
-      "Sin visita técnica. Te mostramos el módulo SST —disponible hoy— y cómo Activos e IIoT operan en la misma plataforma.",
+      "Sin visita técnica. Te mostramos SST, Activos e IIoT y cómo operan juntos en la misma plataforma.",
     offer: {
       title: "Qué incluye la demo",
       description:
@@ -189,7 +189,7 @@ export const contactCtaByPage = {
     eyebrow: "Sin visita técnica",
     title: "¿Quieres ver Askill Industrial Platform en tu operación?",
     description:
-      "Pide una demo o un acceso de prueba. SST está disponible hoy; Activos e IIoT se habilitan en la misma plataforma.",
+      "Pide una demo o un acceso de prueba. SST, Activos e IIoT se operan en la misma plataforma.",
     buttonLabel: "Pedir demo",
     href: "/contacto?origen=plataforma",
   },
