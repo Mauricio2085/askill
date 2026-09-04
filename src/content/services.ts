@@ -198,13 +198,13 @@ export const platformModules: PlatformModule[] = [
     problem:
       "Muchas plantas aún operan el mantenimiento con inventarios dispersos, historiales incompletos y poca visibilidad para priorizar intervenciones.",
     solution:
-      "El módulo de Activos ampliará Askill Industrial Platform para centralizar inventario, órdenes de trabajo e indicadores de desempeño en la misma experiencia donde hoy opera SST.",
+      "El módulo de Activos centraliza inventario, órdenes de trabajo e indicadores de desempeño en la misma experiencia donde hoy opera SST.",
     impact:
       "Una sola plataforma para seguridad operativa y gestión de activos, con menos herramientas aisladas y mejor trazabilidad para mantenimiento y proyectos.",
     impactBullets: [
-      "Incluirá inventario y criticidad de equipos con trazabilidad por ubicación.",
-      "Incluirá órdenes de trabajo, checklists e historial de intervenciones.",
-      "Incluirá indicadores para priorizar paros, costos y cumplimiento del plan de mantenimiento.",
+      "Inventario y criticidad de equipos con trazabilidad por ubicación.",
+      "Órdenes de trabajo, checklists e historial de intervenciones.",
+      "Indicadores para priorizar paros, costos y cumplimiento del plan de mantenimiento.",
     ],
     image: activos,
     // Copy completo del producto (no se muestra mientras status === "roadmap").
@@ -231,13 +231,13 @@ export const platformModules: PlatformModule[] = [
     problem:
       "Sin telemetría centralizada, las desviaciones se detectan tarde y la operación depende de estar frente al tablero o de registros manuales incompletos.",
     solution:
-      "El módulo IIoT conectará variables de piso de planta (PLC y sensores) a Askill Industrial Platform para monitoreo, alertas e historial en la nube, complementando SST y Activos.",
+      "El módulo IIoT conecta variables de piso de planta (PLC y sensores) a Askill Industrial Platform para monitoreo, alertas e historial en la nube, complementando SST y Activos.",
     impact:
       "Visibilidad continua de la operación y una base de datos para mantenimiento más oportuno, dentro de la misma plataforma industrial.",
     impactBullets: [
-      "Incluirá dashboard web del estado de máquinas desde PC, tablet o móvil.",
-      "Incluirá alertas tempranas ante desviaciones de variables críticas.",
-      "Incluirá historial para análisis de paros, eficiencia y soporte a mantenimiento predictivo.",
+      "Dashboard web del estado de máquinas desde PC, tablet o móvil.",
+      "Alertas tempranas ante desviaciones de variables críticas.",
+      "Historial para análisis de paros, eficiencia y soporte a mantenimiento predictivo.",
     ],
     image: iiot,
     // Copy completo del producto (no se muestra mientras status === "roadmap").

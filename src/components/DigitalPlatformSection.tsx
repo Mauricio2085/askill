@@ -13,8 +13,6 @@ import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 function ModuleContent({ module }: { module: PlatformModule }) {
-  const isRoadmap = module.status === 'roadmap'
-
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
       <div>
@@ -28,7 +26,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
         <dl className="mt-6 space-y-5">
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'El reto en planta' : 'El problema en planta'}
+              El problema en planta
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.problem}
@@ -36,7 +34,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'Nuestra visión' : 'Nuestra solución'}
+              Nuestra solución
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.solution}
@@ -44,7 +42,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'El valor esperado' : 'El impacto'}
+              El impacto
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.impact}
