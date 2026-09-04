@@ -18,16 +18,9 @@ function ModuleContent({ module }: { module: PlatformModule }) {
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
       <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
-            {module.title}
-          </h4>
-          {isRoadmap ? (
-            <span className="rounded-md border border-askill-primary/30 bg-askill-primary/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-askill-primary">
-              Próximamente
-            </span>
-          ) : null}
-        </div>
+        <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          {module.title}
+        </h4>
         <p className="mt-2 text-sm font-medium text-askill-primary sm:text-base">
           {module.subtitle}
         </p>
@@ -172,7 +165,6 @@ export function DigitalPlatformSection() {
             >
               {platformModules.map((module) => {
                 const isActive = module.id === activeModuleId
-                const isRoadmap = module.status === 'roadmap'
 
                 return (
                   <button
@@ -191,17 +183,6 @@ export function DigitalPlatformSection() {
                     }`}
                   >
                     {module.label}
-                    {isRoadmap ? (
-                      <span
-                        className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-                          isActive
-                            ? 'bg-askill-primary-foreground/15 text-askill-primary-foreground'
-                            : 'bg-askill-primary/10 text-askill-primary'
-                        }`}
-                      >
-                        Pronto
-                      </span>
-                    ) : null}
                   </button>
                 )
               })}
