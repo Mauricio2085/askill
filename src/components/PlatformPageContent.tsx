@@ -110,6 +110,11 @@ export function PlatformPageContent() {
                         <dd className="mt-1.5 text-pretty">{detail.impact}</dd>
                       </div>
                     </dl>
+                    {module.spotlightBullet ? (
+                      <p className="mt-5 rounded-xl border bg-background/60 p-4 text-sm leading-relaxed">
+                        {module.spotlightBullet}
+                      </p>
+                    ) : null}
                   </div>
                 </li>
               );

@@ -60,6 +60,11 @@ function ModuleContent({ module }: { module: PlatformModule }) {
             {bullet}
           </li>
         ))}
+        {module.spotlightBullet ? (
+          <li className="rounded-xl border bg-background/60 p-4 text-sm leading-relaxed">
+            {module.spotlightBullet}
+          </li>
+        ) : null}
       </ul>
     </div>
   )

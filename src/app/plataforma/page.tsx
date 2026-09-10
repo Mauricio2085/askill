@@ -9,17 +9,17 @@ import { contactCtaByPage } from "@/content/contact";
 export const metadata: Metadata = {
   title: "Askill Industrial Platform",
   description:
-    "Plataforma SaaS para operaciones industriales: permisos SST con evidencia digital, gestión de activos y monitoreo IIoT. Pide una demo sin visita técnica. ASKILL S.A.S — Pereira, Colombia.",
+    "Plataforma SaaS para operaciones industriales: permisos SST con evidencia digital, gestión de activos y monitoreo IIoT sobre los equipos que ya gestionas. Pide una demo sin visita técnica. ASKILL S.A.S — Pereira, Colombia.",
   openGraph: {
     title: "Askill Industrial Platform | ASKILL S.A.S",
     description:
-      "SST, activos e IIoT en una sola plataforma. Pide una demo o un acceso de prueba.",
+      "SST y activos en una sola plataforma; IIoT sobre los equipos que ya gestionas. Pide una demo o un acceso de prueba.",
     url: "/plataforma",
   },
   twitter: {
     title: "Askill Industrial Platform | ASKILL S.A.S",
     description:
-      "SST, activos e IIoT en una sola plataforma. Pide una demo o un acceso de prueba.",
+      "SST y activos en una sola plataforma; IIoT sobre los equipos que ya gestionas. Pide una demo o un acceso de prueba.",
   },
   alternates: {
     canonical: "/plataforma",

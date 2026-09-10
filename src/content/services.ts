@@ -33,6 +33,7 @@ export type PlatformModule = {
   solution: string;
   impact: string;
   impactBullets: string[];
+  spotlightBullet?: string;
   image: StaticImageData;
   /**
    * Copy completo del módulo cuando esté listo.
@@ -169,6 +170,9 @@ export const engineeringServices: EngineeringService[] = [
   },
 ];
 
+const activosQrSpotlight =
+  "QR en planta: consulta ficha, ubicación e historial del activo frente al equipo, con un escaneo desde el celular.";
+
 export const platformModules: PlatformModule[] = [
   {
     id: "sst",
@@ -198,27 +202,29 @@ export const platformModules: PlatformModule[] = [
     problem:
       "Muchas plantas aún operan el mantenimiento con inventarios dispersos, historiales incompletos y poca visibilidad para priorizar intervenciones.",
     solution:
-      "El módulo de Activos centraliza inventario, órdenes de trabajo e indicadores de desempeño en la misma experiencia donde hoy opera SST.",
+      "El módulo de Activos centraliza inventario, órdenes de trabajo e indicadores de desempeño en la misma experiencia donde hoy opera SST, y deja la planta lista para sumar monitoreo en tiempo real.",
     impact:
-      "Una sola plataforma para seguridad operativa y gestión de activos, con menos herramientas aisladas y mejor trazabilidad para mantenimiento y proyectos.",
+      "Una sola plataforma para seguridad operativa y gestión de activos, con mejor trazabilidad para mantenimiento y la base para ver tus equipos vivir cuando la operación lo pida.",
     impactBullets: [
       "Inventario y criticidad de equipos con trazabilidad por ubicación.",
       "Órdenes de trabajo, checklists e historial de intervenciones.",
       "Indicadores para priorizar paros, costos y cumplimiento del plan de mantenimiento.",
     ],
+    spotlightBullet: activosQrSpotlight,
     image: activos,
     // Copy completo del producto (no se muestra mientras status === "roadmap").
     upcomingDetail: {
       problem:
         "Activos críticos sin historial confiable, mantenimiento reactivo por fallas imprevistas, o falta de indicadores para priorizar intervenciones y repuestos.",
       solution:
-        "Centralizamos inventario de activos, órdenes de trabajo, historial de intervenciones e indicadores de desempeño en la misma plataforma conectada a tu operación.",
+        "Centralizamos inventario de activos, órdenes de trabajo, historial de intervenciones e indicadores de desempeño en la misma plataforma, y dejamos lista la planta para sumar monitoreo en tiempo real.",
       impact:
-        "Mayor disponibilidad de equipos, planificación de mantenimiento basada en datos y visibilidad para líderes sobre criticidad, costos y cumplimiento de planes.",
+        "Mayor disponibilidad de equipos, planificación de mantenimiento basada en datos y la base para sumar visibilidad en tiempo real cuando la operación lo pida.",
       impactBullets: [
         "Inventario y criticidad: registro estructurado de activos con trazabilidad por equipo y ubicación.",
         "Mantenimiento planificado: órdenes, checklists e historial de intervenciones en un solo lugar.",
         "Métricas accionables: indicadores para reducir paros, reprocesos y tiempos de respuesta.",
+        activosQrSpotlight,
       ],
     },
   },
@@ -226,18 +232,18 @@ export const platformModules: PlatformModule[] = [
     id: "iiot",
     label: "IIoT",
     title: "Monitoreo Inteligente en Tiempo Real",
-    subtitle: "Industrial IoT en la nube",
+    subtitle: "El pulso en vivo de tus activos",
     status: "roadmap",
     problem:
       "Sin telemetría centralizada, las desviaciones se detectan tarde y la operación depende de estar frente al tablero o de registros manuales incompletos.",
     solution:
-      "El módulo IIoT conecta variables de piso de planta (PLC y sensores) a Askill Industrial Platform para monitoreo, alertas e historial en la nube, complementando SST y Activos.",
+      "El IIoT se activa sobre tu gestión de activos: conectamos variables de piso (PLC y sensores) a los equipos que ya tienes en la plataforma, para monitoreo, alertas e historial en la nube.",
     impact:
-      "Visibilidad continua de la operación y una base de datos para mantenimiento más oportuno, dentro de la misma plataforma industrial.",
+      "Visibilidad continua de los equipos que ya gestionas y datos para un mantenimiento más oportuno, en la misma plataforma industrial.",
     impactBullets: [
-      "Dashboard web del estado de máquinas desde PC, tablet o móvil.",
+      "Dashboard web del estado de tus activos desde PC, tablet o móvil.",
       "Alertas tempranas ante desviaciones de variables críticas.",
-      "Historial para análisis de paros, eficiencia y soporte a mantenimiento predictivo.",
+      "Historial ligado a cada equipo, para análisis de paros y soporte a mantenimiento predictivo.",
     ],
     image: iiot,
     // Copy completo del producto (no se muestra mientras status === "roadmap").
@@ -245,13 +251,13 @@ export const platformModules: PlatformModule[] = [
       problem:
         "Desconocimiento de las causas reales de los paros de máquina hasta que el daño ya está hecho, dependencia de registros manuales en papel o imposibilidad de supervisar las variables si no se está frente al tablero físico.",
       solution:
-        "Conectamos tus variables de piso de planta (PLC, sensores) directamente a nuestra plataforma web SaaS (Software as a Service) segura en la nube.",
+        "Sobre el inventario de activos que ya operas en la plataforma, conectamos variables de piso (PLC y sensores) a un monitoreo seguro en la nube.",
       impact:
-        "Visibilidad continua de tu operación desde cualquier dispositivo, con datos centralizados para decisiones más rápidas y mantenimiento orientado a la eficiencia.",
+        "Visibilidad continua de los equipos que ya gestionas, desde cualquier dispositivo, con datos para decisiones más rápidas y un mantenimiento orientado a la eficiencia.",
       impactBullets: [
-        "Dashboard Web: visualización del estado de tus máquinas en tiempo real desde PC, tablet o móvil.",
+        "Dashboard Web: visualización en tiempo real del estado de tus activos desde PC, tablet o móvil.",
         "Alertas Tempranas: notificaciones inmediatas ante desviaciones de variables antes de que ocurra la falla.",
-        "Control de Paros y OEE: centralización de datos históricos para análisis de eficiencia operativa y soporte real para mantenimiento predictivo.",
+        "Control de Paros y OEE: historial ligado a cada equipo para análisis de eficiencia y soporte real a mantenimiento predictivo.",
       ],
     },
   },
@@ -262,7 +268,7 @@ export const platformService = {
   title: "Askill Industrial Platform",
   subtitle: "Software como servicio para operaciones industriales",
   description:
-    "SST, gestión de activos y monitoreo IIoT se concentran en la misma plataforma, con evidencia digital para la operación.",
+    "SST y gestión de activos digitalizan la operación. El IIoT se suma a Activos para ver en tiempo real los equipos que ya tienes bajo control.",
 };
 
 /** Copy de producto para marketing; en roadmap usa `upcomingDetail` si existe. */

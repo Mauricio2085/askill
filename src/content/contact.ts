@@ -142,7 +142,7 @@ export const contactContent = {
   platformPage: {
     title: "Demo de Askill Industrial Platform",
     intro:
-      "Sin visita técnica. Te mostramos SST, Activos e IIoT y cómo operan juntos en la misma plataforma.",
+      "Sin visita técnica. Te mostramos SST y Activos, y cómo el IIoT se suma cuando tus equipos ya están en la plataforma.",
     offer: {
       title: "Qué incluye la demo",
       description:
@@ -158,7 +158,7 @@ export const contactContent = {
       "¡Gracias! Recibimos tu solicitud y te contactaremos para coordinar la demo o el acceso de prueba.",
     messageLabel: "Qué quieres ver",
     messagePlaceholder:
-      "Cuéntanos si te interesa SST, Activos, IIoT o la plataforma completa. Número aproximado de trabajadores o plantas ayuda a preparar la demo.",
+      "Cuéntanos si te interesa SST, Activos o sumar IIoT a tus equipos. Número aproximado de trabajadores o plantas ayuda a preparar la demo.",
     subject: "Solicitud de demo — Askill Industrial Platform",
   },
 } as const;
@@ -189,7 +189,7 @@ export const contactCtaByPage = {
     eyebrow: "Sin visita técnica",
     title: "¿Quieres ver Askill Industrial Platform en tu operación?",
     description:
-      "Pide una demo o un acceso de prueba. SST, Activos e IIoT se operan en la misma plataforma.",
+      "Pide una demo o un acceso de prueba. SST y Activos cubren la operación; el IIoT da visibilidad en vivo a los equipos que ya gestionas.",
     buttonLabel: "Pedir demo",
     href: "/contacto?origen=plataforma",
   },

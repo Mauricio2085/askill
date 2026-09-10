@@ -2,7 +2,7 @@ export const platformPageContent = {
   eyebrow: "Askill Industrial Platform",
   title: "Una plataforma para SST, activos y monitoreo en planta",
   description:
-    "Digitaliza permisos de trabajo, inventario de equipos y variables de piso en el mismo producto. SST, Activos e IIoT se operan desde una sola plataforma.",
+    "Digitaliza permisos de trabajo e inventario de equipos en el mismo producto. El IIoT se suma a tu gestión de activos: ves en tiempo real los equipos que ya tienes bajo control.",
   primaryCtaLabel: "Pedir demo",
   secondaryCtaLabel: "Ingresar",
   whatsappCtaLabel: "Pedir demo por WhatsApp",
@@ -10,7 +10,7 @@ export const platformPageContent = {
   modulesEyebrow: "Módulos",
   modulesTitle: "Tres capacidades, una sola operación",
   modulesDescription:
-    "Entras por el dolor que tienes hoy. SST, Activos e IIoT quedan en la misma cuenta, en el mismo producto.",
+    "Entras por el dolor que tienes hoy. SST cubre la seguridad operativa; Activos ordena tu planta. El IIoT es el siguiente paso: visibilidad en vivo de los equipos que ya gestionas.",
   problemLabel: "El problema",
   solutionLabel: "La solución",
   impactLabel: "El impacto",
@@ -37,7 +37,7 @@ export const platformPageContent = {
     {
       title: "IIoT",
       description:
-        "Variables de PLC o sensores para el monitoreo en la nube, en la misma cuenta.",
+        "Cuando tus activos ya están en la plataforma, conectamos variables de PLC o sensores para verlos vivir en tiempo real.",
     },
   ],
 } as const;
