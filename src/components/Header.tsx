@@ -21,7 +21,7 @@ const serviceLinks = [
     label: service.title,
   })),
   {
-    href: `/servicios#${platformService.id}`,
+    href: '/plataforma',
     label: platformService.title,
   },
 ];

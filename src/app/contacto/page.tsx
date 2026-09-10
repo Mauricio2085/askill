@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { ContactPageContent } from '@/components/ContactPageContent'
 import { Header } from '@/components/Header'
 import { SiteFooter } from '@/components/SiteFooter'
+import { getContactIntent } from '@/content/contact'
 
 export const metadata: Metadata = {
   title: 'Agenda una visita técnica',
@@ -19,12 +20,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: Promise<{
+    need?: string | string[]
+    origen?: string | string[]
+  }>
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams
+  const intent = getContactIntent(params)
+  const defaultNeed =
+    typeof params.need === 'string' ? params.need : undefined
+
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <Header />
       <main id="main-content">
-        <ContactPageContent />
+        <ContactPageContent intent={intent} defaultNeed={defaultNeed} />
       </main>
       <SiteFooter />
     </div>

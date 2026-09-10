@@ -80,6 +80,7 @@ export function getOrganizationJsonLd() {
 export const siteRoutes = [
   { path: "/", changeFrequency: "monthly", priority: 1 },
   { path: "/servicios", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/plataforma", changeFrequency: "weekly", priority: 0.9 },
   { path: "/sobre-nosotros", changeFrequency: "monthly", priority: 0.8 },
   { path: "/contacto", changeFrequency: "monthly", priority: 0.8 },
   { path: "/politica-privacidad", changeFrequency: "yearly", priority: 0.3 },

@@ -71,7 +71,7 @@ export function ServicesTeaser() {
 
           <li>
             <Link
-              href={`/servicios#${platformService.id}`}
+              href="/plataforma"
               className="group flex h-full flex-col rounded-2xl border border-dashed border-askill-primary/40 bg-askill-primary/5 p-5 transition-colors hover:border-askill-primary sm:p-6"
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-askill-primary">

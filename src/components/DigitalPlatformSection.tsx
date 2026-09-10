@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState, type KeyboardEvent } from 'react'
 
 import {
@@ -12,21 +13,12 @@ import { sitePlatform } from '@/lib/site'
 import { siteContainerClassName } from '@/lib/site-container'
 
 function ModuleContent({ module }: { module: PlatformModule }) {
-  const isRoadmap = module.status === 'roadmap'
-
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
       <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
-            {module.title}
-          </h4>
-          {isRoadmap ? (
-            <span className="rounded-md border border-askill-primary/30 bg-askill-primary/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-askill-primary">
-              Próximamente
-            </span>
-          ) : null}
-        </div>
+        <h4 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          {module.title}
+        </h4>
         <p className="mt-2 text-sm font-medium text-askill-primary sm:text-base">
           {module.subtitle}
         </p>
@@ -34,7 +26,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
         <dl className="mt-6 space-y-5">
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'El reto en planta' : 'El problema en planta'}
+              El problema en planta
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.problem}
@@ -42,7 +34,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'Nuestra visión' : 'Nuestra solución'}
+              Nuestra solución
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.solution}
@@ -50,7 +42,7 @@ function ModuleContent({ module }: { module: PlatformModule }) {
           </div>
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {isRoadmap ? 'El valor esperado' : 'El impacto'}
+              El impacto
             </dt>
             <dd className="mt-2 text-pretty text-sm leading-relaxed sm:text-base">
               {module.impact}
@@ -68,6 +60,11 @@ function ModuleContent({ module }: { module: PlatformModule }) {
             {bullet}
           </li>
         ))}
+        {module.spotlightBullet ? (
+          <li className="rounded-xl border bg-background/60 p-4 text-sm leading-relaxed">
+            {module.spotlightBullet}
+          </li>
+        ) : null}
       </ul>
     </div>
   )
@@ -133,7 +130,13 @@ export function DigitalPlatformSection() {
             <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
               {platformService.description}
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/plataforma"
+                className="inline-flex h-11 items-center justify-center rounded-md bg-askill-primary px-6 text-sm font-semibold text-askill-primary-foreground hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askill-primary focus-visible:ring-offset-2"
+              >
+                Conocer la plataforma
+              </Link>
               <a
                 href={sitePlatform.url}
                 target="_blank"
@@ -165,7 +168,6 @@ export function DigitalPlatformSection() {
             >
               {platformModules.map((module) => {
                 const isActive = module.id === activeModuleId
-                const isRoadmap = module.status === 'roadmap'
 
                 return (
                   <button
@@ -184,17 +186,6 @@ export function DigitalPlatformSection() {
                     }`}
                   >
                     {module.label}
-                    {isRoadmap ? (
-                      <span
-                        className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-                          isActive
-                            ? 'bg-askill-primary-foreground/15 text-askill-primary-foreground'
-                            : 'bg-askill-primary/10 text-askill-primary'
-                        }`}
-                      >
-                        Pronto
-                      </span>
-                    ) : null}
                   </button>
                 )
               })}

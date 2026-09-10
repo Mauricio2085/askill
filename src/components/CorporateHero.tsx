@@ -20,7 +20,7 @@ export function CorporateHero() {
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg">
             Desde la programación de PLC en tablero hasta el monitoreo en la
             nube. Acompañamos tu planta con automatización, modernización de
-            activos y una plataforma SaaS para SST, IIoT y gestión de activos.
+            activos y una plataforma SaaS para SST, gestión de activos e IIoT.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -31,10 +31,10 @@ export function CorporateHero() {
               Agenda una visita técnica
             </Link>
             <Link
-              href="/servicios"
+              href="/plataforma"
               className="inline-flex h-11 w-full items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto"
             >
-              Ver servicios
+              Ver la plataforma
             </Link>
           </div>
 
@@ -54,7 +54,7 @@ export function CorporateHero() {
             <div className={`${heroHighlightCardClassName} sm:col-span-1`}>
               <dt className="text-xs font-medium text-white/70">Digital</dt>
               <dd className="mt-1 text-sm font-semibold text-white">
-                IIoT, SST y gestión de activos en la nube
+                SST, activos y monitoreo IIoT sobre tus equipos
               </dd>
             </div>
           </dl>

@@ -8,9 +8,17 @@ import {
   contactNeedOptions,
   contactPreferenceOptions,
   contactUrgencyOptions,
+  isPlatformNeed,
+  resolveContactNeedValue,
+  type ContactIntent,
 } from '@/content/contact'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+
+type ContactFormProps = {
+  intent?: ContactIntent
+  defaultNeed?: string
+}
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
@@ -31,9 +39,38 @@ function optionLabel(
   return options.find((option) => option.value === value)?.label ?? value
 }
 
-export function ContactForm() {
+export function ContactForm({
+  intent = 'engineering',
+  defaultNeed,
+}: ContactFormProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
   const [feedbackMessage, setFeedbackMessage] = useState('')
+  const [need, setNeed] = useState(() =>
+    resolveContactNeedValue(defaultNeed, intent),
+  )
+
+  const isPlatform = isPlatformNeed(need)
+  const formCopy = isPlatform
+    ? {
+        title: contactContent.platformForm.title,
+        helperText: contactContent.platformForm.helperText,
+        submitLabel: contactContent.platformForm.submitLabel,
+        successMessage: contactContent.platformForm.successMessage,
+        messageLabel: contactContent.platformForm.messageLabel,
+        messagePlaceholder: contactContent.platformForm.messagePlaceholder,
+        subject: contactContent.platformForm.subject,
+        ariaLabel: 'Formulario de solicitud de demo de plataforma',
+      }
+    : {
+        title: contactContent.form.title,
+        helperText: contactContent.form.helperText,
+        submitLabel: contactContent.form.submitLabel,
+        successMessage: contactContent.form.successMessage,
+        messageLabel: contactContent.form.messageLabel,
+        messagePlaceholder: contactContent.form.messagePlaceholder,
+        subject: contactContent.form.subject,
+        ariaLabel: 'Formulario de solicitud de visita técnica',
+      }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -58,6 +95,9 @@ export function ContactForm() {
     const needValue = formData.get('need')
     const urgencyValue = formData.get('urgency')
     const preferenceValue = formData.get('preference')
+    const platformRequest = isPlatformNeed(
+      typeof needValue === 'string' ? needValue : null,
+    )
 
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -68,7 +108,9 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: 'Solicitud de visita técnica — ASKILL S.A.S',
+          subject: platformRequest
+            ? contactContent.platformForm.subject
+            : contactContent.form.subject,
           from_name: 'ASKILL Web',
           name: formData.get('name'),
           company: formData.get('company'),
@@ -84,6 +126,7 @@ export function ContactForm() {
             contactPreferenceOptions,
             preferenceValue,
           ),
+          intent: platformRequest ? 'platform' : 'engineering',
           message: formData.get('message'),
           privacy_consent: formData.get('privacy') === 'on',
           botcheck: formData.get('botcheck'),
@@ -102,8 +145,9 @@ export function ContactForm() {
       }
 
       setStatus('success')
-      setFeedbackMessage(contactContent.form.successMessage)
+      setFeedbackMessage(formCopy.successMessage)
       form.reset()
+      setNeed(resolveContactNeedValue(defaultNeed, intent))
     } catch {
       setStatus('error')
       setFeedbackMessage(contactContent.form.errorMessage)
@@ -115,15 +159,15 @@ export function ContactForm() {
   return (
     <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-foreground sm:text-xl">
-        {contactContent.form.title}
+        {formCopy.title}
       </h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        {contactContent.form.helperText}
+        {formCopy.helperText}
       </p>
 
       <form
         className="mt-8 space-y-5"
-        aria-label="Formulario de solicitud de visita técnica"
+        aria-label={formCopy.ariaLabel}
         onSubmit={handleSubmit}
       >
         <input
@@ -219,7 +263,8 @@ export function ContactForm() {
               name="need"
               required
               disabled={isSubmitting}
-              defaultValue=""
+              value={need}
+              onChange={(event) => setNeed(event.target.value)}
               className={selectClassName}
             >
               <option value="" disabled>
@@ -240,7 +285,7 @@ export function ContactForm() {
               name="urgency"
               required
               disabled={isSubmitting}
-              defaultValue=""
+              defaultValue={intent === 'platform' ? 'demo' : ''}
               className={selectClassName}
             >
               <option value="" disabled>
@@ -263,7 +308,7 @@ export function ContactForm() {
             name="preference"
             required
             disabled={isSubmitting}
-            defaultValue="visita"
+            defaultValue={intent === 'platform' ? 'whatsapp' : 'visita'}
             className={selectClassName}
           >
             <option value="" disabled>
@@ -279,7 +324,7 @@ export function ContactForm() {
 
         <label className="block text-left">
           <span className="mb-2 block text-sm font-medium text-foreground">
-            {contactContent.form.messageLabel}
+            {formCopy.messageLabel}
           </span>
           <textarea
             name="message"
@@ -287,7 +332,7 @@ export function ContactForm() {
             required
             disabled={isSubmitting}
             className={textareaClassName}
-            placeholder={contactContent.form.messagePlaceholder}
+            placeholder={formCopy.messagePlaceholder}
           />
         </label>
 
@@ -319,7 +364,7 @@ export function ContactForm() {
           >
             {isSubmitting
               ? contactContent.form.submittingLabel
-              : contactContent.form.submitLabel}
+              : formCopy.submitLabel}
           </button>
 
           {feedbackMessage ? (
